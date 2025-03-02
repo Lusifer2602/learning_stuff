@@ -1,0 +1,10 @@
+hello world
+this is a sample text file written to  test some things
+
+this is more text added to the new.txt file and i am gonna see how merging works from here on
+hello master bruce i hope you are doing alright this is Alfred, your bachpan ka sathi/naukar lol
+
+
+adding more text to this file 
+
+MERGING SUCCESSFUL
