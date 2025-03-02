@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning JS in HTML</title>
+
+<script src='sample.js'> </script> 
+<!--a script won't be executed if it contains a syntax error-->
+</head>
+<link rel="stylesheet" href="SMStyles.css">
+
+<body>
+<script>
+	console.log("Tera Bhai SeedheMaut for life") </script>
+
+<!-- if we have a lot of js code we can use <script src="path/to/javascript.js"> to link the js script file to the main webpage 
+
+	**we can also add entire links to html script tag**-->
+
+<!-- As a rule, only the simplest scripts are put into HTML. More complex ones reside in separate files.
+
+The benefit of a separate file is that the browser will download it and store it in its cache.
+
+Other pages that reference the same script will take it from the cache instead of downloading it, so the file is actually downloaded only once.
+
+That reduces traffic and makes pages faster.-->
+
+<!-- if src is set the code within the script tag is ignored -->
+
+<!-- <script>
+	alert('Hello');
+	alert('World'); </script>
+jitne marzi utne statements add kr skte baaw
+<script>
+alert (1+
+2
++3); semicolon defines end of a statement in js -->
+<!--<script>
+alert("Hello");
+
+[1, 2].forEach(alert);
+
+</script> -->
+<!-- we use "use strict" feature to avoid compatibility issues of older js code with the newer one. this text is placed at the top of the script's code to avoid compatibility issues between the code and the browser.-->
+
+
+</body>
+</html>
