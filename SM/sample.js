@@ -90,4 +90,5 @@ let a= 4>1, age=null;
 // alert(a); //output is true
 alert (age);
 
-
+let asphalt; //if you don't set a value for a variable it will be shown as undefined
+alert(asphalt);
