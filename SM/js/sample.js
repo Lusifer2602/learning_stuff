@@ -27,7 +27,7 @@ let ek='tera'
 //when naming a variable it must only contain letters, digits, or the symbols $ and _. For example :
 let $=12;
 let your_name=321; // these two variables have been declared
-alert($ + your_name);
+console.log($ + your_name);
 
 
 //js is case sensitive so APPLE and apple are two different variables
@@ -81,14 +81,16 @@ let str3=`${str}`; /* and here we learnt there are three types of quotes in Java
 	double quotes " ", 
 	single quotes ' ', 
 	backticks ` ` */
-alert(str3)
+console.log(str3)
 
 let goat="SeedheMaut";
-alert (`Give a shoutout for TERA BHAI ${goat}!!!!`);
+console.log(`Give a shoutout for TERA BHAI ${goat}!!!!`);
 
 let a= 4>1, age=null;
 // alert(a); //output is true
-alert (age);
+console.log(age);
 
 let asphalt; //if you don't set a value for a variable it will be shown as undefined
-alert(asphalt);
+console.log(asphalt);
+console.log
+console.log(typeof str2);
