@@ -25,8 +25,14 @@ alert(result);
 
         Numeric Conversion - happens when we enter two numbers as strigns and apply a mathematical operator on them
         for eg*/
+let a=12;
+b=String(a);
+console.log(`Type of a : ${typeof(a)};
+Type of b after a getting converted): ${typeof(b)}`);
 
-console.log('12'/'2');
-console.log('12'/2);
-console.log(12/2); //in all these cases when a mathematical operator was applied on two numbers despite either or both of them beinwritten as string, it was automatically converted to intger to perform the given operand.
+console.log(`${'12'/'2'}
+${'12'/2}
+${12/2}`); //in all these cases when a mathematical operator was applied on two numbers despite either or both of them beinwritten as string, it was automatically converted to intger to perform the given operand.
+
+//we cane user Number(value) to consider a value as number and the conversion fails if it isn't explicitly a number
 
