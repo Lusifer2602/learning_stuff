@@ -4,4 +4,7 @@
 * asterisk used to create a pointer variable and for multiplication
 # preprocessor - a macro processor that is used to automatically by the compiler to transform proogram before actual compilation.
 . used to access members of a structure or union.
-~  bitwise One's complement operator 
+~  bitwise One's complement operator  [flips value from 0 to 1 in binary representation]
+
+
+

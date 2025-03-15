@@ -1,30 +1,3 @@
-// //AIM : to write a C program to calculate the Simple Interest and Compound Interest.
-
-// # include <conio.h>
-// # include <stdio.h>
-// # include <math.h>
-
-// void main () 
-// {
-//     int p, n, ch;
-//     float r;
-//     printf("\nEnter the choice:\n1.Simple interest\n2.Compound interest:\nchoice:");
-//     scanf("%d, &ch");
-//     printf("\nEnter the value of amount, number of years and Rate of interest:");
-
-//     scanf("%d %d %f", &p, &n, &r);
-//     switch(ch)
-// {
-//     case1:printf("\nThe simple interest is = %f", (p*n*r)/100);
-//     break;
-//     case2:printf("\nThe compound  interest is = %f", (p*pow((1+(r/100)),n)-p));
-//     break;
-
-// }
-// getch();
-// }
-
-
 #include <stdio.h>
 #include <math.h>
 
