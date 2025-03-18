@@ -6,5 +6,7 @@
 . used to access members of a structure or union.
 ~  bitwise One's complement operator  [flips value from 0 to 1 in binary representation]
 
-
+Array
+ it can store multiple values
+ unlike in integer we can store only one number, we can use Array for the following task.
 
