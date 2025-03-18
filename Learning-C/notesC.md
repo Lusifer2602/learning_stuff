@@ -9,4 +9,12 @@
 Array
  it can store multiple values
  unlike in integer we can store only one number, we can use Array for the following task.
+ start with variable name and add square bracket then define its size
+  int a[size]={contents}; // we are free to add any number of contents in an array, like if an array has 10 content defiend then we can also add just 1 or 2 contents into it.
 
+whenever an array is defined it takes sequential location in the memory. Array can be 1 dimensional(only one row), 2 dimensional(in form of rows x columns).
+
+In 2D array :
+a[][]={{}{}}
+
+one should know wh
