@@ -35,4 +35,3 @@ ${'12'/2}
 ${12/2}`); //in all these cases when a mathematical operator was applied on two numbers despite either or both of them beinwritten as string, it was automatically converted to intger to perform the given operand.
 
 //we cane user Number(value) to consider a value as number and the conversion fails if it isn't explicitly a number
-
