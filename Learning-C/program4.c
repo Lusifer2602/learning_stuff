@@ -3,7 +3,7 @@
 void main()
 {
     long int n, i=1, sum=0, r;
-    printf("\nEnter the Decimal Nu././mber : ");
+    printf("\nEnter the Decimal Number : ");
     scanf("%ld", &n);
     while(n>0)
 
