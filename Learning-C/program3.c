@@ -18,9 +18,9 @@ void main()
     case 4:if(b==0)
     printf("\nDivisionis not possible");
     else
-    printf("\nDivision od %d/%d is %f", a, b,(float)a/b);
+    printf("\nDivision of %d/%d is %f", a, b,(float)a/b);
     break;
-    case5:printf("\nModulus of %d%%d is %d", a, b, a%b);
+    case 5:printf("\nModulus of %d%%d is %d", a, b, a%b);
     break;
     deafult: printf("\nEnter correct choice:");
     break;
