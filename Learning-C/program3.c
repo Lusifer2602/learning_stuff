@@ -22,7 +22,7 @@ void main()
     break;
     case 5:printf("\nModulus of %d%%d is %d", a, b, a%b);
     break;
-    deafult: printf("\nEnter correct choice:");
+    default: printf("\nEnter correct choice:");
     break;
 }
 getch();
