@@ -46,7 +46,7 @@ in 6. 9px is the output because after numerically adding 4 and 5,
 px is the next string that will get attached to this numeric value because of + sign's priority to convert into string first.
 */
 
-/*
+
 let a0 = prompt("First number?", 1),
 b0 = prompt("Second number?", 2);
 console.log(a0 +b0); //will give the output of a+b as per what the input was otherwise by default join 1 and 2 together and give 12 as the output.
@@ -54,5 +54,5 @@ console.log(a0 +b0); //will give the output of a+b as per what the input was oth
 let a1 = prompt("First number?", 1),
 b1 = prompt("Second number?", 2);
 console.log(Number(a1) +Number(b1));
-*/
 
+//next up comparisons
