@@ -28,4 +28,3 @@ console.log(0== null,
 
 let a=22/0, b=0/313;
 console.log(a); //this will give infinity as the result
-
