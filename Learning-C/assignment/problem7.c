@@ -12,7 +12,7 @@ void main()
         for(j=0; j<col; j++)
         {
         scanf("%d", &arr[i][j]);
-        }
+    }
     }
     printf("\nThe elements of 20 array");
     
