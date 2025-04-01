@@ -26,4 +26,4 @@ else if (year1==NaN){
 }
 else {
     console.log("Bhool gaya bc!?!?")
-} //else if in JS is just like elif in python no biggie
+}
