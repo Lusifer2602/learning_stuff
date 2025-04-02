@@ -30,3 +30,4 @@ console.log(firstname||lastname||nickname||"ANONYMOUS");
 
 // Short-Circuit Evaluation - OR || operator is so-called short-circuit evaluation
 //it means that || processes the arguments until the forst true value isi reached, and the value is returned immediately without touching the other
+// OR finds the first truthy value. 
