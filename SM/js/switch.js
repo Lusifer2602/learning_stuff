@@ -1,30 +1,28 @@
-console.log("Chalo baccho aaj seekhenge ki kaise hum switch case statements ko JavaScript mein use kar sakte hain.")
+let a = 2 + 2;
 
-/* syntax :
-switch(x) {
-  case 'value1':  // if (x === 'value1')
-    ...
-    [break]
-
-  case 'value2':  // if (x === 'value2')
-    ...
-    [break]
-
+switch (a) {
+  case 3:
+    console.log( 'Too small' );
+    break;
+  case 4:
+    console.log( 'Exactly!' );
+    break;
+  case 5:
+    console.log( 'Too big' );
+    break;
   default:
-    ...
-    [break]     } 
-*/
-//example
-let a=prompt("Bhayanak Aatma");
-swtich(a){
-    case "Bhayanak Aatma":
-    console.log("Tumhari Beti ke andar ek bhayanak aatma hai!!! ")
+    console.log( "I don't know such values" );
+}
+
+let shaktiman=prompt("Enter the name").toLowerCase();
+switch (shaktiman){
+  case "batman":
+    console.log(`Shaktiman hi ${shaktiman} hai.`);
     break;
-    
-    case "Batman";
-    console.log("Kabhi kuchh or bhi likha lia kar bhadwe");
-    break;
-    case "Spiderman";
-    console.log("Hehehe fav superhero.");
-    break;
+
+    case "aam admi party":
+      console.log("haddiyaan todo inki");
+      break;
+    default:
+      console.log("Input not recognised");
 }
