@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StudyMate Dark App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<link rel="stylesheet" href="style.css">
 <body>
   <header>
     <h1>Gyancho</h1>
@@ -45,9 +45,7 @@
       <p>Currently studying: <span id="displaySubject"></span></p>
       
       <h3>Active Users (Matching Your Criteria)</h3>
-      <ul id="userList">
-        <!-- Dynamically populated -->
-      </ul>
+      <ul id="userList"></ul>
 
       <h3>Study Session</h3>
       <button id="startSessionBtn">Start Study Session</button>
@@ -60,9 +58,14 @@
     </div>
   </div>
 
+  <!-- Add Socket.IO client library -->
+  <script src="/socket.io/socket.io.js"></script>
   <script>
-    // In-memory users array for demonstration.
-    const users = [];
+    // Connect to the server (use localhost for testing, update to IP for multi-device)
+    
+    const socket = io('http://10.0.0.186:3000'); // Replace with your server's IP (e.g., 192.168.x.x:3000) later
+
+    let users = []; // Synced with server
     let currentUser = null;
 
     // DOM Elements
@@ -90,7 +93,6 @@
       const smartnessLevel = parseInt(document.getElementById('smartnessLevel').value);
       const genderPreference = document.getElementById('genderPreference').value;
       
-      // Create user profile object
       currentUser = {
         username,
         subject,
@@ -101,26 +103,28 @@
         reports: []
       };
       
-      // Add to our users "database"
-      users.push(currentUser);
-      
-      // Switch to the app screen
+      // Send user data to server
+      socket.emit('new-user', currentUser);
+
       loginScreen.classList.add('hidden');
       appScreen.classList.remove('hidden');
       displayUsername.textContent = username;
       displaySubject.textContent = subject;
-      
+    });
+
+    // Receive updated user list from server
+    socket.on('update-users', (allUsers) => {
+      users = allUsers;
       updateUserList();
     });
 
-    // Update user list with active users (for demo, simply list all other users)
+    // Update user list
     function updateUserList() {
       userList.innerHTML = '';
       users.forEach(user => {
         if (user.username !== currentUser.username && !currentUser.blocked.includes(user.username)) {
           const li = document.createElement('li');
           li.textContent = `${user.username} - ${user.subject}`;
-          // Clicking on a user will simulate pairing for a study session
           li.addEventListener('click', () => {
             partnerNameSpan.textContent = user.username;
             sessionModeSpan.textContent = currentUser.studyPreference;
@@ -131,10 +135,9 @@
       });
     }
 
-    // Start a study session by pairing with a matching user
+    // Start a study session
     startSessionBtn.addEventListener('click', () => {
       if (users.length > 1) {
-        // Basic matching algorithm: pick the first available user not blocked
         const partner = users.find(u => u.username !== currentUser.username && !currentUser.blocked.includes(u.username));
         if (partner) {
           partnerNameSpan.textContent = partner.username;
@@ -148,7 +151,7 @@
       }
     });
 
-    // End the study session and collect rating
+    // End the study session
     endSessionBtn.addEventListener('click', () => {
       const rating = prompt('Rate your study partner (1-5):');
       if (rating) {
@@ -157,7 +160,7 @@
       }
     });
 
-    // Report a user by username
+    // Report a user
     reportUserBtn.addEventListener('click', () => {
       const reportedUser = prompt('Enter the username to report:');
       if (reportedUser) {
@@ -166,7 +169,7 @@
       }
     });
 
-    // Block a user by username
+    // Block a user
     blockUserBtn.addEventListener('click', () => {
       const blockUser = prompt('Enter the username to block:');
       if (blockUser) {
@@ -176,7 +179,7 @@
       }
     });
 
-    // Logout (reload the page for demo purposes)
+    // Logout
     logoutBtn.addEventListener('click', () => {
       location.reload();
     });
