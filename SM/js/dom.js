@@ -11,4 +11,3 @@ JavaScript can react to all existing HTML events in the page
 JavaScript can create new HTML events in the page  */
 
 // DOM is like a bridge between HTML and JavaScript.
-
