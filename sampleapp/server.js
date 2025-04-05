@@ -14,6 +14,12 @@ io.on('connection', (socket) => {
   });
 });
 
-http.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+// http.listen(port, () => {
+//   console.log(`Server listening on port ${port}`);
+// });
+const HOST = '0.0.0.0'; // Allow all network interfaces
+const PORT = 3000;
+
+http.listen(PORT, HOST, () => {
+  console.log(`Server running at http://${HOST}:${PORT}`);
 });
