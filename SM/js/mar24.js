@@ -48,5 +48,6 @@ you--;
 console.log(`adding two minus after var you's name gives the output ${you--}`)
 //we can also assigh variables to incremented variables
 let ass = 99;
-thigh = ++ass; 
+thigh = ++ass; //we can also write this as ass++
+console.log(ass++);
 console.log(thigh);
