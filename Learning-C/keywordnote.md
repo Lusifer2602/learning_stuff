@@ -7,7 +7,7 @@ int, long, register, return, short, signed, sizeof, static,
 struct, switch, typedef, union, unsigned, void, volatile, while }
 
 auto - used to specify automatic storage class which is the default storage class variable that is declared inside a function or a block. Automatic variables as they are local to a function.
-    [Storage Class defines the scope. lifetime, and linkage of a function or a variable]
+    [Storage Class defines the scope. lifetime, and linkage of a function or a variable] the variables and values under auto keyword are stored within the block of code they've been executed in and as soon as the block of code is exited that vairable defined under auto ceases to exist. 
 
 break and continue - used in if else conditions where the break continue stops the program if code makes it reach the following break statement AND
 continue statement is used when a situation is satisfied under if else statement and a ceratain value has to either be skipped.
