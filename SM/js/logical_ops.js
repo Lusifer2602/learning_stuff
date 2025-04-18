@@ -1,6 +1,5 @@
 //Logical Operators
 
-
 //OR represented with ||
 console.log(true||false, //true
     false||true, //true
