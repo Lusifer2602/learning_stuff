@@ -144,18 +144,44 @@ color: white;
 #elklrcs {
     /* color: #13120d; */
     filter: invert(.1);
-
 }
+
+/* Nanchaku */
 .nanchaku {
     display: grid;
 }
 
-#nchklogo {
+/* #nchklogo {
     height: 250px;
     grid-column-start: 1;
-}
+} */
 
 #nchklrcs{
-    grid-column-start: 2 ;
-   
+    grid-column-start: 1;   
+}
+#khatta_flow {
+    background-image: linear-gradient(#e586bc, #e1d3d4, #90cb9a,#e1d3d4, #90b0cb);
+    display: grid;
+    color: #1f191f;
+
+}
+
+#nchklogo {
+    grid-column-start: 1;
+    height: 250px;
+    padding: 10px;
+}
+#kfid {
+    color: #541032;
+    align-items: center;
+}
+#batman {
+    grid-column: 2;
+    align-items: center;
+}
+
+#kflrcs {
+    color: #541032;
+    grid-column-start: 2;
+    align-items: center;
 }
