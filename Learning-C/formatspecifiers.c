@@ -16,12 +16,12 @@ int main(){
 
     int boston;
     boston=21;
-    printf("Here we can see that we can also declare variables without giving them a particular value and then specify  in a statement later \n  the declared var is : %d", boston);
+    printf("Here we can see that we can also declare variables without giving them a particular value and then specify  in a statement later \n  the declared var is : %d\n", boston);
     
     //changing variable values
     // we had used int boston previously and we can change the same var's value by redefining it here
     boston=432;
-    printf("%d", boston);
+    printf("The new value assigned to the same variable is : %d", boston);
 
 return 0;
 }
