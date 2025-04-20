@@ -15,4 +15,4 @@ Everyone's been waiting for you."
 
 #lets see how to make the script answer before it is being in the moment
 prashn=$1
-echo ("RAM RAM $prashn BHAI ! ! ! !") 
+echo "RAM RAM $prashn BHAI ! ! ! !"
