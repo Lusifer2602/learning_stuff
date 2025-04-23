@@ -37,7 +37,13 @@ int my_year=1;
 printf("The Name is %s\n", bmuname);
 printf("I'd rate BMU %f/10\n", bmurating);
 printf("Average age that I observed in this is : %d\n", avgage);
-
+printf("%lf\n", 231.121111);
+printf("%f\n", 21.2123121);
+// different data types consume different storage in the memory
+// int takes 2-4 bytes
+// float takes 4 bytes
+// double takes 8 bytes
+// char takes 1 byte
 
     return 0;
 >>>>>>> ubuntu
