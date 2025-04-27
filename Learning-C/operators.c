@@ -1,22 +1,43 @@
 #include <stdio.h>
 int main() {
+        //ek sath saare examples lete hain bc ab
+        int abdul=786, bishamber_lal=1008;
+printf("We have taken the integers as\n abdul=786, bishamber_lal=1008");
+printf("abdul + bishamber_lal = %d\n", abdul+bishamber_lal);
+printf("abdul - bishamber_lal = %d\n", abdul-bishamber_lal);
+printf("abdul * bishamber_lal = %d\n", abdul*bishamber_lal);
+printf("abdul / bishamber_lal = %d\n", abdul/bishamber_lal);
+printf("abdul %% bishamber_lal = %d\n", abdul%bishamber_lal);
+printf("+abdul = %d\n", +abdul);
+printf("-abdul = %d\n", -abdul);
+printf("abdul++ = %d\n", abdul++);
+printf("abdul-- = %d\n", abdul--); //arithmetic operators in C completed here
+printf("\n");
+//starting with Relational Operators
+printf("abdul < bishamber_lal : %d\n", abdul<bishamber_lal);
+printf("abdul > bishamber_lal : %d\n", abdul>bishamber_lal);
+printf("abdul <= bishamber_lal : %d\n", abdul<=bishamber_lal);
+printf("abdul >= bishamber_lal : %d\n", abdul>=bishamber_lal);
+printf("abdul == bishamber_lal : %d\n", abdul ==bishamber_lal);
+printf("abdul != bishamber_lal: %d\n", abdul!=bishamber_lal);
+//these relational operators will give 0 for false and 1 for true
+printf("\n");
 
-        int a=10, b=123;
+//LOGICAL OPERATORS
+ // using operators and printing results
+    printf("abdul && bishamber_lal : %d\n", abdul && bishamber_lal);
+    printf("abdul || bishamber_lal : %d\n", abdul || bishamber_lal);
+    printf("!abdul: %d\n", !abdul);
+int zero=0; 
+//here the compiler checks if the program has any non zero values that it can return False(0) for and if there's not then it gives true(1) as output depending on the Logical Operator being used
+printf("\n");
+printf("adbul OR zero : %d\n", abdul||zero);
+printf("abdul AND zero : %d\n", abdul&&zero);
+printf("!bishamber_lal : %d\n", !bishamber_lal);
+printf("\n");
 
-        int sum=a+b;
-            printf("SOS ke kitne baap?!\nSOS ke %d baap.\n", sum);
-            printf("We can also add variables in print statement,\nlike here a+b is %d\n", a+b);
-        int diff=a-b;
-            printf("this is the number of fucks i give about Pakistan's sentiments if they're going to keep hurting ourpeople just like this %d\n", diff);
-        int prod=a*b;
-            printf("Bhai %d baar to aajkal potty aa rhi\n", prod);
-        float quot=a/b;
-            printf("I could kill for %f an ounce of happiness\n", quot);
-        int remainder=a%b;
-            printf("Bhai 123 ko 10 se divide karoge to %d remainder ayega.\n", remainder);
-        int incrementoperator=++a;//this operator will increase value of any function by 1.
-            printf("a par a++ lagayenge to banega %d\n", incrementoperator);
-            //thoda mamla samajh nahi aa rha so lets try other stuff on these operators
-            printf("Ye hogaya b pe increment operator apply %d\n", ++b);
-    return 0;
+//bitwise operators (watch some YT to understand how exactly they work on fundamental level ya ChatGPT karle smjhne ke liye)
+//fuckit alag se file bana ke karte hain kaam in pe
+
+return 0;
 }
