@@ -14,7 +14,7 @@ echo "$who honey, $who will call me that"
 
 sleep 2
 news=$1
-echo "The $news is the one that makes the $who call me what they do"
+echo "$news is the one that makes the $who call me what they do"
 
 sleep 1
 prime=$2
