@@ -3,10 +3,10 @@
 
 #include<stdio.h>
 int main(){
-/*    int birth_year, year=2025;
+    int birth_year, year=2025;
     printf("How old are you man?\nNevermind just tell me your birth year I will figure it out\n");
     scanf("%d", &birth_year);
-    printf("Ohh so you are %d years old, got it thanks", year - birth_year);*/
+    printf("Ohh so you are %d years old, got it thanks", year - birth_year);
     // ok now lets try this on our own kyuki upar wala AI se correct karwa ke likha h
 
 //ok now we will create another program that asks what year we were born in and then tell in what year we'd turn a 100 years old
