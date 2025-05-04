@@ -1,4 +1,4 @@
-#include<stdio.h>
+include<stdio.h>
 int main(){
     int a;
     printf("Enter a number and we'll see if that shit is +ve, -ve or 0");
@@ -15,6 +15,7 @@ int main(){
     else{
     printf("The number is 0 value.\n");
     }
+
 
     return 0;
 }
