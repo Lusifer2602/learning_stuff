@@ -1,8 +1,11 @@
 #include<stdio.h>
-int i;
 int main(){
-    // 2 ka table
-    for(i=1;i<=10;i++){
-        printf("2 x %d = %d\n", i, i*2);
+    int num, i;
+    printf("Enter the number you want to write table of : \n");
+    scanf("%d",&num);
+    printf("Here's a multiplication table of %d\n",num);
+    for (i=1; i<=10; i++){
+        printf("%d x %d = %d\n", num, i, i*num);
     }
+    return 0;
 }
