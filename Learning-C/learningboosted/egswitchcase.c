@@ -16,7 +16,6 @@ int main(){
                   else {printf("%.2f %c %.2f is equal to : %.2f\n", num1, op, num2,  num1/num2);}
                   break;
 
-
         default: printf("Invalid input/s\n");
     }
 return 0;

@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main(){
     int num, i;
-    printf("Enter the number you want to write table of : \n");
+    printf("Enter the number you want to write table of : ");
     scanf("%d",&num);
     printf("Here's a multiplication table of %d\n",num);
     for (i=1; i<=10; i++){
