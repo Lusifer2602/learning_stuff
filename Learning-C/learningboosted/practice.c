@@ -29,7 +29,11 @@ printf("OK WE START ANOTHER ONE HERE ON\n");
 
 printf("OK WE START ANOTHER ONE HERE ON\n");
 
-    
+    for(outer=1;outer<=5;outer++){
+        for(inner=5;inner>=6-outer;inner--){
+            printf("%d ", inner);
+        }
+        printf("\n");
+    }
 return 0;
 }
-
