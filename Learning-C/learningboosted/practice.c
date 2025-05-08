@@ -16,5 +16,20 @@ printf("OK WE START ANOTHER ONE HERE ON\n");
         }
         printf("\n");
     }
+
+printf("OK WE START ANOTHER ONE HERE ON\n");
+
+    int outer, inner;
+    for(outer=5; outer>=1; outer--){
+        for(inner=1;inner<=outer; inner++){
+            printf("%d ",inner);        
+        }
+    printf("\n");
+    }
+
+printf("OK WE START ANOTHER ONE HERE ON\n");
+
+    
 return 0;
 }
+
