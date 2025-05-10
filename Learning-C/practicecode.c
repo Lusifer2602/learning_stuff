@@ -1,14 +1,20 @@
 #include<stdio.h>
 int main(){
-//lets find sum of n natural numbers
-int i, sum=0, num;
-printf("enter the number to find sum of : ");
+//lets find sum of n even natural numbers
+int i, newnum, sum=0, num;
+printf("Enter the number till where you want to find some of even numbers :  ");
 scanf("%d", &num);
 
-for(i=num;i>=1;i--){
-sum+=i;
+if(num%2!=0){
+    newnum=num-1;
 }
-printf("The sum of the following natural number is : %d\n", sum);
+
+else{printf("Invalid Input! Please add a valid natural number");}
+
+    for(i=newnum;i>=2;i-=2){
+        sum=sum+i;
+    }
+    printf("The sum of all natural even number from 2 to %d is : %d\n", num, sum);
 
 
     return 0;
