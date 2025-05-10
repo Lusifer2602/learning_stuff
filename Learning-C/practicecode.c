@@ -6,11 +6,11 @@ int main(){
 //problem 4 : Count how many numbers between 1 to n are divisible by 2 but not by 4
 
 int i, j, k; //one extra var for safety lol
-//Prolem 1
-printf("The following numbers from 1-50 are divisible by 3 & 5 : ");
+//Prolem 2
+printf("The following numbers from 1-50 are divisible by 3 or 7 : ");
 for(i=1;i<=50;i++){
 
-if(i%3==0 && i%5==0){printf("%d, ", i);}
+if(i%3==0 || i%7==0){printf("%d, ", i);}
 }
 printf("\n");
  
