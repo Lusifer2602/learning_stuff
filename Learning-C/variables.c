@@ -4,7 +4,7 @@ int main(){
     printf("One of the greatest thing about C is you are able to declare variables without assigning a value to them.\n");
     asshole=123; //assigned valye to the variable later! ain't that crazy!?!?
     printf("The integer assigned is : %d\n", asshole);
-<<<<<<< HEAD
+
     
     //lets start something here now; the date's 21st April
     asshole=653;
@@ -17,7 +17,7 @@ printf("%d\n", abba*dabba-jhabba);
 
     return 0;
 
-=======
+
 
 //ok lets create some shit that involves all learnt about variables
 /*
@@ -46,5 +46,5 @@ printf("%f\n", 21.2123121);
 // char takes 1 byte
 
     return 0;
->>>>>>> ubuntu
+
 }
