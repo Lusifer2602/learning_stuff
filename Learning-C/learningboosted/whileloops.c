@@ -1,6 +1,6 @@
 #include<stdio.h>
 int main(){
-    int num=123, sum, rem; // this is a program to find sum of all the integers in a given natural number
+    int num=123, sum=0, rem; // this is a program to find sum of all the integers in a given natural number
     while(num>0){
         rem=num%10;
         num=num/10;
