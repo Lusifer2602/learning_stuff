@@ -22,3 +22,10 @@ console.log("" || "fallback");
 console.log(0&&"yes");
 console.log(null ?? "default");
 
+//Comparisons
+console.log("2"==2); //loose (true)
+console.log("2"===2); //strict (false aana chhaiye)
+console.log(null==undefined);//true ayega(loose haI)
+console.log(null===undefined); //false ayega(kyuki strict hai)
+
+//completed, lets moveon to loops now!!
