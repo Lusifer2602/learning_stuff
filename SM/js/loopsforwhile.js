@@ -1,20 +1,23 @@
-/*syntax
-while loop:
+// firse seekhte hain bc loops kaise  start krte hain
+//lets start with a counter machine that counts from a given number to a given number
 
-while(condition){
-    //code
-    //loop body
-}
-*/
-// let i=1;
-// while(i<11){
-//     console.log(i);
-//     i++;
-// }
-// console.log("Here the while loop ends.")
+let start=Number(prompt("Enter the number to start counting from : ")),
+    end=Number(prompt("Enter the number to end the counting at : "));
 
-let i = 3;
-while (i) { // when i becomes 0, the condition becomes falsy, and the loop stops
-  console.log( i );
-  i--;
+if(start>end){
+    for(let i=start; i>=end; i--){
+        console.log(i);
+    }
 }
+
+else if(start<end){
+    for(let i=start; i<=end; i++){
+        console.log(i);
+    }
+}
+
+else if(start=end){
+    alert("Start and End are equal");
+}
+
+else{console.log("INVALID INPUT");}
