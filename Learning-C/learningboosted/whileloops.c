@@ -5,15 +5,18 @@ int main(){
         rem=num%10;
         num=num/10;
         sum+=rem;}
-    printf("%d ", sum);
+    printf("sum of digits of 123 is : ");
+    printf("%d \n", sum);
     
     //next we will write a program  to reverse the numbers of an integer
+    printf("321 reversed is: ");
    int remainder, number=321;
     while(number>0){
         remainder=number%10;
         number=number/10;
         printf("%d", remainder);}
     printf("\n");
+
 
     return 0;
 }
