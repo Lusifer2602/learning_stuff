@@ -79,4 +79,8 @@ for(let i=1;i<=10;i++){
 }
 
 
-
+//chull hui to bas ek table print karne ka program likh dia lol
+let a=Number(prompt("Enter the number you want to get the table printed of"));
+    for(let i=1; i<=10; i++){
+        console.log(`${a} x ${i} = ${i*a}\n`);
+        }
