@@ -12,3 +12,5 @@
 | `<assert.h>`  | **Debugging**: `assert()` for runtime checks                                          |
 | `<errno.h>`   | **Error reporting**: check `errno` value after function failures                      |
 | `<stddef.h>`  | Defines types like `size_t`, `NULL`, and `offsetof()` macro                           |
+
+doing the petty act of committing anyways because brain is fucked in enough ways to make me try to not make it worse than it already is :)
