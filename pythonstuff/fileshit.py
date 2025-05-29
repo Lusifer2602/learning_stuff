@@ -1,0 +1,5 @@
+a=open("newfile.txt\n", "w+")
+a.write("This is the latest entry to this file")
+a.write("This is the second entry i have made to the following file\n")
+a.close()
+print("File has been created and neccessary details have been added")
