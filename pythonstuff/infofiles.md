@@ -13,7 +13,7 @@ file.read()         # Read entire content
 file.readline()     # Read one line
 file.readlines()    # Read all lines into a list
 
-Reading From Files :
+Writing To Files :
 file.write("text")     # Writes text
 file.writelines([...]) # Writes list of strings
 
