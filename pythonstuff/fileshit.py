@@ -13,3 +13,4 @@ while True:
     with open('new.json', 'a') as file:
         json.dump(d, file)
 
+
