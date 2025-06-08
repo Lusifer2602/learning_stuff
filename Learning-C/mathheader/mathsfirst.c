@@ -13,6 +13,7 @@ int main(){
     /* printf("Square of %.1lf will be %.3lf\n", new, pow(new, 2)); */
 
 //lets create a program that calculates the length of hypotenuse of a triangle
+printf("Let us calculate length of hypotenuse\n\n");
 int height, length, hypotenuse;
 printf("Enter the height and perpendicular \nlength should separated with a space : ");
 scanf("%d %d", &height, &length);
