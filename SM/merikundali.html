@@ -1,0 +1,471 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranav's Interactive Astrological Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Earth Tones -->
+    <!-- Application Structure Plan: The application is designed as a single-page dashboard with tab-based navigation. This structure was chosen to transform the dense, linear text of the astrological report into a digestible, user-centric experience. The main sections (Core Identity, Life Timeline, Career, Health, etc.) are separated into thematic tabs. This allows the user to immediately access the area of life they are most interested in, rather than scrolling through a long document. The key interaction is the 'Life Timeline' chart, which visualizes long-term planetary periods (Dashas) and allows users to click on them to get detailed information, making the concept of life phases tangible and easy to explore. This non-linear, interactive approach is superior for usability and comprehension of complex astrological data. -->
+    <!-- Visualization & Content Choices: Vimshottari Dasha -> Goal: Show change over time -> Viz: Interactive Horizontal Bar Chart (Chart.js) -> Interaction: Click on a Dasha bar to display detailed text analysis below. Justification: This transforms a complex table of dates and effects into an intuitive visual timeline, highlighting the current period and making future trends easily accessible. Annual Forecast -> Goal: Organize sequential events -> Viz: Vertical Timeline (HTML/CSS) -> Interaction: Click to expand details. Justification: This is more engaging than a list and clearly shows the flow of the year. Key traits/warnings -> Goal: Inform/Alert -> Viz: Styled cards and callout boxes (HTML/CSS). Justification: This draws attention to critical information like financial warnings or health sensitivities. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF5;
+            color: #4A4A4A;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        .nav-button {
+            transition: all 0.3s ease;
+        }
+        .nav-button.active {
+            background-color: #A0522D;
+            color: #FFFFFF;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            transition: all 0.3s ease;
+        }
+        .icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .timeline-item .timeline-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+            padding: 0 1rem;
+        }
+        .timeline-item.active .timeline-content {
+            max-height: 500px; /* Adjust as needed */
+            padding: 1rem 1rem;
+        }
+        .timeline-item .arrow {
+            transition: transform 0.3s ease;
+        }
+        .timeline-item.active .arrow {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-[#8B4513]">Pranav's Astrological Dashboard</h1>
+            <p class="mt-2 text-lg text-gray-600">An Interactive Journey Through Your Life's Blueprint</p>
+        </header>
+
+        <nav class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+            <button data-target="identity" class="nav-button active px-4 py-2 rounded-full text-sm md:text-base bg-white border border-gray-300 hover:bg-gray-100">Core Identity</button>
+            <button data-target="timeline" class="nav-button px-4 py-2 rounded-full text-sm md:text-base bg-white border border-gray-300 hover:bg-gray-100">Life Timeline</button>
+            <button data-target="career" class="nav-button px-4 py-2 rounded-full text-sm md:text-base bg-white border border-gray-300 hover:bg-gray-100">Career & Finance</button>
+            <button data-target="health" class="nav-button px-4 py-2 rounded-full text-sm md:text-base bg-white border border-gray-300 hover:bg-gray-100">Health & Wellness</button>
+            <button data-target="relationships" class="nav-button px-4 py-2 rounded-full text-sm md:text-base bg-white border border-gray-300 hover:bg-gray-100">Relationships</button>
+            <button data-target="challenges" class="nav-button px-4 py-2 rounded-full text-sm md:text-base bg-white border border-gray-300 hover:bg-gray-100">Challenges & Strengths</button>
+        </nav>
+
+        <main>
+            <!-- Core Identity Section -->
+            <section id="identity" class="content-section active">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#A0522D]">Your Core Identity</h2>
+                    <p class="mt-2 text-gray-600">This section reveals the foundational elements of your personality, temperament, and innate qualities as defined by your birth chart. These are the core energies that shape your approach to life.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="card text-center">
+                        <div class="icon mb-4">⚖️</div>
+                        <h3 class="text-xl font-semibold mb-2 text-[#8B4513]">Lagna: Libra</h3>
+                        <p class="text-gray-700">You are cooperative, peace-loving, and driven by a strong desire for harmony. You possess a clear sense of right and wrong, though you can be more idealistic than realistic. Your approach to life is graceful and balanced.</p>
+                    </div>
+                    <div class="card text-center">
+                        <div class="icon mb-4">♍</div>
+                        <h3 class="text-xl font-semibold mb-2 text-[#8B4513]">Rashi: Virgo</h3>
+                        <p class="text-gray-700">Your moon sign gives you a sharp, analytical mind and a meticulous nature. You are intellectually curious and practical, though you may have a tendency towards worry and over-thinking details.</p>
+                    </div>
+                    <div class="card text-center">
+                        <div class="icon mb-4">🖐️</div>
+                        <h3 class="text-xl font-semibold mb-2 text-[#8B4513]">Nakshatra: Hasta</h3>
+                        <p class="text-gray-700">Your birth star grants you discipline, wisdom, and sharp intellect. You are a "magician with words," skilled at communication and persuasion. You are resourceful and adept at achieving your goals through your own efforts and connections.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Life Timeline Section -->
+            <section id="timeline" class="content-section">
+                 <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#A0522D]">Your Life Timeline (Vimshottari Dasha)</h2>
+                    <p class="mt-2 text-gray-600">This interactive timeline visualizes the major planetary periods (Mahadashas) that shape the different long-term phases of your life. Click on any Dasha to understand its unique influence on your journey. The current period is highlighted.</p>
+                </div>
+                <div class="card mb-6">
+                    <div class="chart-container">
+                        <canvas id="dashaChart"></canvas>
+                    </div>
+                </div>
+                <div id="dasha-info" class="card">
+                     <h3 id="dasha-title" class="text-2xl font-bold text-[#A0522D] mb-2">Select a Dasha</h3>
+                     <p id="dasha-description" class="text-gray-700">Click on a bar in the timeline chart above to see detailed information about that major life period.</p>
+                </div>
+            </section>
+
+            <!-- Career & Finance Section -->
+            <section id="career" class="content-section">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#A0522D]">Career & Finance</h2>
+                    <p class="mt-2 text-gray-600">Explore your professional aptitudes, recommended career paths, and the dynamics of your financial stability. This section provides insights into how to leverage your strengths and navigate financial challenges.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="card">
+                        <h3 class="text-xl font-semibold mb-3 text-[#8B4513]">Career Aptitude & Path</h3>
+                        <p class="mb-4">You have a strong preference for business over traditional employment and dislike routine desk jobs. Your dynamic nature and leadership qualities (especially after 35) suggest a path towards entrepreneurship or roles that involve travel and interaction.</p>
+                        <h4 class="font-semibold mb-2">Recommended Fields:</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Business, Entrepreneurship, Stock Market</li>
+                            <li>Jewelry, Artisan Crafts, Design</li>
+                            <li>Media: Publishing, Journalism, TV/Radio</li>
+                            <li>Consulting: Psychiatrist, Astrologer, Advisor</li>
+                            <li>Service: Tourism, Physiotherapy, Banking</li>
+                        </ul>
+                    </div>
+                    <div class="card border-l-4 border-red-500">
+                        <h3 class="text-xl font-semibold mb-3 text-[#8B4513]">Financial Insights & Warnings</h3>
+                        <p class="mb-4">Your financial life is marked by high contrast: periods of good luck followed by difficult ones. While you are intellectually capable of earning wealth, retaining it is a challenge.</p>
+                        <div class="bg-red-50 border border-red-200 text-red-800 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">Critical Warning: Avoid Speculation</h4>
+                            <p>Strictly avoid all forms of gambling and speculative investments. Your chart shows a strong predisposition to financial uncertainty and losing wealth gained through such means. Control spending habits and focus on stable, long-term growth.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Health & Wellness Section -->
+            <section id="health" class="content-section">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#A0522D]">Health & Wellness</h2>
+                    <p class="mt-2 text-gray-600">This section outlines your inherent health sensitivities and provides guidance for maintaining physical and mental well-being. Proactive self-care is key to mitigating potential issues.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-4 text-[#8B4513]">Health Profile & Sensitivities</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div>
+                            <h4 class="font-semibold">Lagna-Based Sensitivities</h4>
+                            <ul class="list-disc list-inside text-gray-700 mt-2">
+                                <li>Highly sensitive skin</li>
+                                <li>Lower back pain</li>
+                                <li>Lower abdominal/reproductive area</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Key Triggers to Avoid</h4>
+                            <ul class="list-disc list-inside text-gray-700 mt-2">
+                                <li>Lack of sleep / Insomnia</li>
+                                <li>Rich, heavy foods and excess sugar</li>
+                                <li>Excessive work and worry</li>
+                            </ul>
+                        </div>
+                        <div class="md:col-span-2 lg:col-span-1">
+                            <h4 class="font-semibold">Potential Concerns</h4>
+                            <ul class="list-disc list-inside text-gray-700 mt-2">
+                                <li>Food poisoning / Stomach issues (especially during Rahu Dasha)</li>
+                                <li>Eye strain, headaches (after 30)</li>
+                                <li>Blood disorders</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-6 bg-green-50 border border-green-200 text-green-800 p-4 rounded-lg">
+                        <h4 class="font-bold mb-2">Proactive Wellness Strategy</h4>
+                        <p>Your health is strongly linked to your lifestyle. Prioritize adequate sleep, a balanced diet, and stress management (like meditation). Avoiding overwork and worry is not just for peace of mind, but is a direct strategy for maintaining your physical health, especially your digestive system.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Relationships Section -->
+            <section id="relationships" class="content-section">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#A0522D]">Relationships & Social Life</h2>
+                    <p class="mt-2 text-gray-600">Understand the dynamics of your marital life, family connections, and friendships. This section highlights both your strengths in building relationships and potential challenges to be aware of.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="card">
+                        <h3 class="text-xl font-semibold mb-3 text-[#8B4513]">Marital Harmony</h3>
+                        <p class="mb-4">An ideal married life with a good-natured spouse is indicated, though minor disputes are possible. You will be focused on home life and supportive of your spouse's endeavors. However, the presence of **Mangal Dosha** in your Chandra Kundli (Moon chart) requires conscious effort to maintain harmony.</p>
+                        <h4 class="font-semibold mb-2">Key Considerations:</h4>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Do not marry against your parents' wishes.</li>
+                            <li>Your spouse may experience some health issues (indicated by Rahu/Ketu placements), requiring your support.</li>
+                            <li>Avoiding extramarital affairs is crucial for your overall fortune.</li>
+                            <li>Marriage before the age of 21 is considered inauspicious.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-xl font-semibold mb-3 text-[#8B4513]">Friendships & Social Connections</h3>
+                        <p class="mb-4">You are highly sociable and skilled at making friends, often leveraging these connections to achieve your goals. Your friends are generally trustworthy and a source of joy.</p>
+                         <div class="bg-yellow-50 border border-yellow-200 text-yellow-800 p-4 rounded-lg">
+                            <h4 class="font-bold mb-2">A Word of Caution: Discernment is Key</h4>
+                            <p>During challenging periods like the current **Rahu Dasha (until 2037)**, be cautious. Friends or colleagues may disappoint, and you could be drawn into undesirable company. It's vital to be discerning in your associations to protect yourself from betrayal or negative influences.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Challenges & Strengths Section -->
+            <section id="challenges" class="content-section">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-[#A0522D]">Key Challenges & Strengths</h2>
+                    <p class="mt-2 text-gray-600">Every astrological chart has areas of inherent strength and challenges that require awareness. Understanding these helps you navigate life with wisdom, leveraging your gifts and managing difficulties.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Strengths -->
+                    <div class="card border-l-4 border-green-500">
+                        <h3 class="text-xl font-semibold mb-3 text-green-700">Your Core Strengths</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-3">✅</span>
+                                <div>
+                                    <h4 class="font-semibold">Resilience & Philosophical Outlook</h4>
+                                    <p class="text-gray-600 text-sm">You have an innate ability to maintain a positive, smiling disposition even through life's "ups and downs," viewing challenges as learning opportunities.</p>
+                                </div>
+                            </li>
+                             <li class="flex items-start">
+                                <span class="text-green-600 mr-3">✅</span>
+                                <div>
+                                    <h4 class="font-semibold">Intellect & Communication</h4>
+                                    <p class="text-gray-600 text-sm">Your sharp mind and skill with words make you an excellent advisor, problem-solver, and persuasive communicator.</p>
+                                </div>
+                            </li>
+                             <li class="flex items-start">
+                                <span class="text-green-600 mr-3">✅</span>
+                                <div>
+                                    <h4 class="font-semibold">No Kaalsarp Dosha</h4>
+                                    <p class="text-gray-600 text-sm">The absence of this significant affliction in your chart is a major positive, indicating fewer inherent life struggles and obstacles.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Challenges -->
+                    <div class="card border-l-4 border-orange-500">
+                        <h3 class="text-xl font-semibold mb-3 text-orange-700">Areas for Awareness</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-orange-600 mr-3">⚠️</span>
+                                <div>
+                                    <h4 class="font-semibold">Sade Sati (Saturn's Influence)</h4>
+                                    <p class="text-gray-600 text-sm">You have experienced this challenging 7.5-year period in the past. Your next major Sade Sati is from **2038-2043**. These periods test patience and can bring financial and personal stress, but also great learning.</p>
+                                </div>
+                            </li>
+                             <li class="flex items-start">
+                                <span class="text-orange-600 mr-3">⚠️</span>
+                                <div>
+                                    <h4 class="font-semibold">Mangal Dosha (in Moon Chart)</h4>
+                                    <p class="text-gray-600 text-sm">This placement can create friction and challenges in marital life. It requires patience, understanding, and proactive effort to maintain harmony with your spouse.</p>
+                                </div>
+                            </li>
+                             <li class="flex items-start">
+                                <span class="text-orange-600 mr-3">⚠️</span>
+                                <div>
+                                    <h4 class="font-semibold">Idealism vs. Practicality</h4>
+                                    <p class="text-gray-600 text-sm">Your ambitious and idealistic plans can sometimes lack a realistic, practical foundation. Grounding your grand visions with actionable steps is key to achieving your high goals.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                 <!-- Annual Forecast -->
+                <div class="mt-8">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-[#A0522D]">Annual Forecast (Feb 2025 - Feb 2026)</h3>
+                        <p class="mt-2 text-gray-600">A look at the specific sub-periods of the year ahead. Click on each period to see its detailed forecast.</p>
+                    </div>
+                    <div class="w-full max-w-3xl mx-auto">
+                        <div class="space-y-4">
+                            <!-- Timeline Items go here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        const dashaData = {
+            labels: ['Chandra', 'Mangal', 'Rahu', 'Guru', 'Shani'],
+            periods: [
+                { name: 'Chandra', start: 'Birth', end: '2012', duration: 10 },
+                { name: 'Mangal', start: '2012', end: '2019', duration: 7 },
+                { name: 'Rahu', start: '2019', end: '2037', duration: 18 },
+                { name: 'Guru', start: '2037', end: '2053', duration: 16 },
+                { name: 'Shani', start: '2053', end: '2072', duration: 19 },
+            ],
+            descriptions: {
+                'Chandra': 'With the Moon in the 12th house, this early period may have involved controlled expenses, some health concerns, and an inclination towards esoteric experiences. Caution against harsh speech was advised.',
+                'Mangal': 'A courageous period with successful travels and harmonious relationships, especially with siblings. Material gains were possible, and efforts were generally successful as opponents posed little threat.',
+                'Rahu': 'A significant and challenging period. Relationships with partners and colleagues may be strained. Expect potential disruptions, legal entanglements, and disappointment from friends. Health requires care, especially regarding food poisoning. This is a time for caution.',
+                'Guru': 'This upcoming period may bring a sense of detachment, high expenses, and stress from opponents. You might feel insecure and waste time on unproductive activities. Developing resilience will be crucial.',
+                'Shani': 'A generally auspicious future period. Efforts will yield positive results, and relationships with seniors will be cordial. Long journeys are beneficial, and friends will be supportive. The mind will incline towards spirituality, and new business or job opportunities may arise.'
+            }
+        };
+
+        const annualForecastData = [
+            { period: "Rahu", dates: "Feb 27, 2025 - Apr 22, 2025", summary: "A challenging start to the year. Mental anguish, issues with superiors, and family disharmony are possible. Avoid risky financial schemes." },
+            { period: "Guru", dates: "Apr 22, 2025 - Jun 10, 2025", summary: "Effort may not yield expected results. Job conditions could worsen and health problems may persist. A period for laying low and avoiding conflict." },
+            { period: "Shani", dates: "Jun 10, 2025 - Aug 07, 2025", summary: "A positive turn. Increased confidence and encouraging results in work are expected. Good income and a harmonious family environment are likely." },
+            { period: "Budh", dates: "Aug 07, 2025 - Sep 28, 2025", summary: "Hard work pays off. Beneficial short travels, good news from abroad, and helpful new contacts are indicated. Favorable for creative or agency work." },
+            { period: "Ketu", dates: "Sep 28, 2025 - Oct 19, 2025", summary: "Good business growth and improved job conditions. New ideas will be abundant, but analyze them carefully. Family matters will require attention." },
+            { period: "Shukra", dates: "Oct 19, 2025 - Dec 19, 2025", summary: "An excellent and comfortable time. Expect increased prestige, higher income, and a pleasant family life. A very favorable period in all aspects." },
+            { period: "Surya", dates: "Dec 19, 2025 - Jan 06, 2026", summary: "A happy domestic period where long-cherished desires may be fulfilled. Lucky travels, financial gains, and good health are expected." },
+            { period: "Chandra", dates: "Jan 06, 2026 - Feb 05, 2026", summary: "Great happiness and financial gains continue. Family harmony prevails and friends are very supportive. Make the best use of this auspicious time." },
+            { period: "Mangal", dates: "Feb 05, 2026 - Feb 27, 2026", summary: "A difficult end to the year. Daily problems, disputes with colleagues, and health concerns may arise. Travels may be disappointing." },
+        ];
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navButtons = document.querySelectorAll('.nav-button');
+            const sections = document.querySelectorAll('.content-section');
+            const dashaTitle = document.getElementById('dasha-title');
+            const dashaDescription = document.getElementById('dasha-description');
+
+            function switchTab(targetId) {
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                navButtons.forEach(button => {
+                    button.classList.remove('active');
+                });
+
+                document.getElementById(targetId).classList.add('active');
+                document.querySelector(`[data-target="${targetId}"]`).classList.add('active');
+            }
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    switchTab(button.dataset.target);
+                });
+            });
+
+            // Dasha Chart
+            const ctx = document.getElementById('dashaChart').getContext('2d');
+            const dashaChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dashaData.periods.map(p => `${p.name} (${p.start}-${p.end})`),
+                    datasets: [{
+                        label: 'Dasha Duration (Years)',
+                        data: dashaData.periods.map(p => p.duration),
+                        backgroundColor: (context) => {
+                             const period = dashaData.periods[context.dataIndex];
+                             return period.name === 'Rahu' ? 'rgba(160, 82, 45, 0.8)' : 'rgba(210, 180, 140, 0.7)';
+                        },
+                        borderColor: (context) => {
+                             const period = dashaData.periods[context.dataIndex];
+                             return period.name === 'Rahu' ? 'rgba(139, 69, 19, 1)' : 'rgba(139, 69, 19, 0.5)';
+                        },
+                        borderWidth: 2,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Duration in Years' }
+                        },
+                        y: {
+                            ticks: { autoSkip: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        label += context.parsed.x + ' years';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const index = elements[0].index;
+                            const dashaName = dashaData.labels[index];
+                            dashaTitle.innerText = dashaName + ' Mahadasha';
+                            dashaDescription.innerText = dashaData.descriptions[dashaName];
+                        }
+                    }
+                }
+            });
+
+            // Initial Dasha Info
+            dashaTitle.innerText = 'Rahu Mahadasha (Current Period)';
+            dashaDescription.innerText = dashaData.descriptions['Rahu'];
+
+            // Annual Forecast Timeline
+            const timelineContainer = document.querySelector('#challenges .space-y-4');
+            annualForecastData.forEach(item => {
+                const timelineItem = document.createElement('div');
+                timelineItem.className = 'timeline-item';
+                timelineItem.innerHTML = `
+                    <div class="flex items-center cursor-pointer p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:bg-gray-50">
+                        <div class="flex-shrink-0 w-24 text-sm font-semibold text-[#A0522D]">${item.dates}</div>
+                        <div class="flex-grow ml-4">
+                            <h4 class="font-semibold text-gray-800">${item.period} Period</h4>
+                        </div>
+                        <div class="arrow text-gray-500">▶</div>
+                    </div>
+                    <div class="timeline-content bg-white border-l border-r border-b border-gray-200 rounded-b-lg">
+                        <p class="text-gray-700">${item.summary}</p>
+                    </div>
+                `;
+                timelineContainer.appendChild(timelineItem);
+            });
+            
+            timelineContainer.addEventListener('click', (e) => {
+                const header = e.target.closest('.timeline-item > div');
+                if (header) {
+                    const item = header.parentElement;
+                    item.classList.toggle('active');
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
