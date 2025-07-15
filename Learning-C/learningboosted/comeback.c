@@ -1,27 +1,27 @@
 //while loops
-//print even numbers till 10
-// print numbers in reverse
-// count number of digits in an intger
+//print even nums till 10
+// print nums in reverse
+// count num of digits in an intger
+// print a num in reverse order
 //
 #include<stdio.h>
 
 int main(){
-    int count=0, n;
-    printf("Enter the number : ");
-    scanf("%d", &n);
-    
-    if(n==0){
-        count=1;}
-    else if(n<0){
-        n=-n;
-        while(n>0){
-        count++;
-        n/=10;}
+    int rem, num, a=0;
+    printf("Enter the num you want to reverse : ");
+    scanf("%d", &num);
+    if(num==0){
+        printf("You stupid fuck thats 0, reverse it and it is still the same\n");
     }
-    else {while(n>0){
-        count++;
-        n/=10;}}
-    printf("%d\n", count);
-    
+    else{
+        while(num!=0){
+            rem=num%10;
+            a=(a*10)+rem;
+            num/=10;
+        }
+        printf("%d\n", a);
+    }
+            
+       
        return 0;
 }
