@@ -1,6 +1,7 @@
 #include<stdio.h>
 //you have to declare function before int main so you can directly call it in the program
-//if you don't you have to do it anyways within the program after int main
+//if you don't you have to do it anyways after you close the int main() function
+//      you will never declare a function within int main(), it will always be either above or below int main()
 //here's the structure for both
 /* 
 // Declaration
@@ -15,14 +16,15 @@ returnType functionName(parameter list) {
 // Usage (call)
 functionName(arguments);    */
 
-// sample
+//functions with no parameters done
 
-void sayhello() { //when returnType is void you don't need to define return value at the end of the function
-    printf("Hello sir welcome to the program\n");
-    // return type won't be anything here
+void greetUser(char name[]) {
+    printf("Hello %s! Welcome to Dunder Mifflin this is your manager Michael Gary Scott\n", name);
 }
 
 int main() {
-    sayhello();
+    greetUser("Batman");
     return 0;
 }
+
+
