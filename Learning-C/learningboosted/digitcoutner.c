@@ -5,7 +5,6 @@ int main() {
     scanf("%d", &i);
     number=i;
     while(i>0){
-        remainder=i%10;
         i/=10;
         count+=1;
     }
