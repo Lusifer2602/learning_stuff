@@ -20,7 +20,7 @@ int main(){
             a=(a*10)+rem;
             num/=10;
         }
-        if(save==a){
+        :x
             printf("Yes the number is a palindrome\n");}
         else {printf("No you stupid fuck it isn't no palindrome\n");}}
             
