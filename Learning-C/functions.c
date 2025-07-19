@@ -16,14 +16,20 @@ returnType functionName(parameter list) {
 // Usage (call)
 functionName(arguments);    */
 
-//functions with no parameters done
-
-void greetUser(char name[]) {
-    printf("Hello %s! Welcome to Dunder Mifflin this is your manager Michael Gary Scott\n", name);
+//function with no parameters, no return done
+//function with parameters, no retrun
+//
+//
+void birthdate(){
+    printf("Please enter your age to know what year you were born in : ");
+    int age;
+    scanf("%d", &age);
+    printf("So you were born in the year : %d\n", 2025-age);
 }
 
 int main() {
-    greetUser("Batman");
+    birthdate();
+
     return 0;
 }
 
