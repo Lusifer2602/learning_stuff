@@ -21,14 +21,11 @@ functionName(arguments);    */
 //
 //
 
-int add (int, int); //optional step
-
-int add(int a, int b){
-    return a+b;
+int mult(int a, int b){
+    return a*b;
 }
-
 int main(){
-    int result=add(5, 7);
+    int result=mult(12, 34);
     printf("Output is : %d\n", result);
     return 0;
 }

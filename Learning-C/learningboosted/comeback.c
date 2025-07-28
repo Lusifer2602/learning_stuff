@@ -23,7 +23,7 @@ int main(){
         num/=10;
         count+=1;
     }
-    printf("%ld has %d digits in it\n", num, count); // here we tell the user the number of digits in their input
+    printf("%ld has %ld digits in it\n", num, count); // here we tell the user the number of digits in their input
     
     num=original;
     while(num>0){ //here we start the exponentiation
