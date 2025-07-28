@@ -20,15 +20,17 @@ functionName(arguments);    */
 //function with parameters, no retrun
 //
 //
-
-int add (int, int); //optional step
-
-int add(int a, int b){
-    return a+b;
+void birthdate(){
+    printf("Please enter your age to know what year you were born in : ");
+    int age;
+    scanf("%d", &age);
+    printf("So you were born in the year : %d\n", 2025-age);
 }
 
-int main(){
-    int result=add(5, 7);
-    printf("Output is : %d\n", result);
+int main() {
+    birthdate();
+
     return 0;
 }
+
+
