@@ -20,17 +20,13 @@ functionName(arguments);    */
 //function with parameters, no retrun
 //functions with parameter and return
 
-
-void goodbye(char name[]){
-    printf("Heyyyy buttplug GOODBYEEEEE!!\n Don't forget to shut the fuck up the next time i am telling you something Mr. %s\n", name);
+int addvalues(long int a, long int b){
+    return (a+b);
 }
 
 int main(){
-    char iname[20];
-    printf("Enter your name my dear dickhead : ");
-    scanf("%s", iname);
-    goodbye(iname); 
+    long int result=addvalues(1234,5678);
+    printf("Alright son the sum to your numbers is %ld\n", result);
+
 return 0;
 }
-
-
