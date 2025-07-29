@@ -19,16 +19,14 @@ functionName(arguments);    */
 //function with no parameters, no return done
 //function with parameters, no retrun
 //
-//
-int mult(int a, int b);
-int subtract(int , int);
-int add(int, int);
-int divide(int, int);
-int remainder(int, int);
-
+int mult(long int a, long int b){
+    return(a*b);
+}
 
 int main(){
     int result=mult(12, 34);
     printf("Output is : %d\n", result);
     return 0;
+}
+
 
