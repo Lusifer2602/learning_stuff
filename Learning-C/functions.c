@@ -18,15 +18,19 @@ functionName(arguments);    */
 
 //function with no parameters, no return done
 //function with parameters, no retrun
-//
-int mult(long int a, long int b){
-    return(a*b);
+//functions with parameter and return
+
+
+void goodbye(char name[]){
+    printf("Heyyyy buttplug GOODBYEEEEE!!\n Don't forget to shut the fuck up the next time i am telling you something Mr. %s\n", name);
 }
 
 int main(){
-    int result=mult(12, 34);
-    printf("Output is : %d\n", result);
-    return 0;
+    char iname[20];
+    printf("Enter your name my dear dickhead : ");
+    scanf("%s", iname);
+    goodbye(iname); 
+return 0;
 }
 
 
