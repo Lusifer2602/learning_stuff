@@ -54,7 +54,7 @@ switch(decide1){
             printf("\nRoot will be : %.3f\n", (float)answer);
             break;
             }
-            default : {printf("\nInvalid Input nigger run the program again\n");
+            default : {printf("\nInvalid input, you mouth-breathing troglodyte. Try again.\n");
                       break;}
             }//switch op ends here
         break;
@@ -71,7 +71,7 @@ printf("Enter second number here : ");
 scanf("%d", &num2);
 
 printf("\nNow enter the operation you want to perform on them\n"
-        "1 to add\n2 to subtract,\n3 to multiply them\n4 to divide : ");
+        "1 to add\n2 to subtract,\n3 to multiply them\n4 to divide\n5 for remainder of first/second : ");
 int decide;
 scanf("%d", &decide);
 
