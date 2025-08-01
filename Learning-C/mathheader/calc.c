@@ -1,4 +1,4 @@
-/*Write a C program that can perform multiple math operations based on user choice:
+/*Write a C program  that can perform multiple math operations based on user choice:
 Addition
 Subtraction
 Multiplication
@@ -12,51 +12,53 @@ Modulus*/
 int sum(int a, int b);
 int sub(int a, int b);
 int product(int a, int b);
-int quotient(int a, int b);
-int sum(float a, float b);
+float quotient(int a, int b);
 float modulus(float a, float b);
 //op on a single number
-float root(float a, float b);
 
 int main(){
-int decide1; float answer;
-printf("First of all tell if your operation is going to be on single number or on two numbers");
+
+int decide1, root; 
+float answer, power, number; char op;
+printf("First of all tell if your operation is going to be on single number or on two numbers : ");
 scanf("%d", &decide1);
 switch(decide1){
     case 1: {
-        float number; char op;
+        char op;
             printf("Enter the number : ");
             scanf("%f", &number);
-            printf("Enter the operation\n"
+            printf("\nEnter the operation\n"
                     "p for raising it to a power\n"
                     "s for sq. root\n"
-                    "r for other roots (you enter the int) : ")
-            scanf("%c", &op);
-            }
+                    "r for other roots (you enter the int) : ");
+            scanf(" %c", &op);
+
         switch(op){
             case 'p': {
-            float power;
             printf("Enter the power you want to raise it to : ");
             scanf("%f", &power);
             answer=pow(number, power);
             printf("\nIt will be : %.3f\n", answer);
+            break;
             }
 
             case 's': {
             answer=pow(number, 1.0/2);
-            printf("\nSquare root will be : %f\n", answer);
+            printf("\nSquare root will be : %.5f\n", answer);
+            break;
             }
-
             case 'r': {
-            float root;
             printf("Enter which root you want : ");
-            scanf("%f", root);
-            answer=pow(number, 1.0/2);
-            printf("\nRoot will be : %.3f\n", answer);
+            scanf("%d", &root);
+            answer=pow(number, 1.0/root);
+            printf("\nRoot will be : %.3f\n", (float)answer);
+            break;
             }
-            default : {printf("\nInvalid Input nigger run the program again\n")};
+            default : {printf("\nInvalid Input nigger run the program again\n");
+                      break;}
             }//switch op ends here
-            }//switch decide1 ends here
+        break;
+            }
 
     case 2: { //This case is for when 2 numbers are being played with
                 printf("Okayyy asshole lets take input from you first\n"
@@ -69,7 +71,7 @@ printf("Enter second number here : ");
 scanf("%d", &num2);
 
 printf("\nNow enter the operation you want to perform on them\n"
-        "1 to add\n2 to subtract,\n3 to multiply them\n4 to divide\n : ");
+        "1 to add\n2 to subtract,\n3 to multiply them\n4 to divide : ");
 int decide;
 scanf("%d", &decide);
 
@@ -96,10 +98,14 @@ switch(decide){
         printf("So the fucking quotient is %.2f\n", div);
         } //else statement ends here
         break;} //case 4 ends here
-    default:
-        printf("Galat input betichod kya kar rha h?!?!?!?!?!\n");
-} //switch statement ends here
-} //case 2 statement ends here
+    case 5:{printf("Remainder will be %d\n", num1%num2);
+           break;}
+    
+    default: {printf("Galat input betichod kya kar rha h?!?!?!?!?!\n");
+break;}
+} //switch decide statement ends here
+} //case 2 of decide ends here
+}//switch decide1 ends here
 
 
     return 0;
@@ -116,10 +122,4 @@ int product(int a, int b){
 }
 float quotient(int a, int b){
 return((float)a/b);
-}
-float root(float a, float b){
-    return pow(a,1.0/b);
-}
-float modulus(float a, float b);
-    return (a%b);
 }
