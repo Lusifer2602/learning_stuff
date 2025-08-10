@@ -1,0 +1,18 @@
+for when there is an issue with merging two brances or commits : https://chatgpt.com/share/6898f617-1048-8005-b3ad-c66060901c5e
+
+Just do this :
+If you're seeing this :
+```
+On branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 4 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+nothing to commit, working tree clean
+```
+- You see this because :
+Your local branch (main) has 1 commit that the remote (origin/main) does not have.
+The remote branch has 4 commits that your local branch does not have.
+So your branches have diverged — they each have commits the other doesn't.
+
+use this :` git pull --rebase origin main `
+
