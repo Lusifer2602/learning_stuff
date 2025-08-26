@@ -30,14 +30,6 @@ em=input("Enter your email id : ")
 
 #now we will add data to the database ; here goes one
 c.execute("INSERT INTO students (name, mobile, mail) VALUES (?,?,?)", (naam, number, em)) #this will add the following details to the database
-#we can also create a loop for it to keep getting executed till the user presses q at any instance and no more entries are given to the database
-
-#now let us access contents of the database
-c.execute("SELECT * FROM students")
-rows=c.fetchall()
-
-for row in rows:
-    print(row)
 
 conn.commit() #save changes to the database
 conn.close() #close connection with database
