@@ -32,7 +32,8 @@ while True:
     if kaksha=='q':
         break
 
-    grade=input("Enter what grade they received : ","\n")
+    grade=input("Enter what grade they received : ")
+    print("\n")
     if grade=='q':
         break
 
