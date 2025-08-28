@@ -34,7 +34,7 @@ while True:
     if kaksha=='q':
         break
 
-    grade=input("Enter what grade you are : ")
+    grade=input("Enter what grade you are : ").upper()
     print("\n")
     if grade=='q':
         break
@@ -45,7 +45,7 @@ while True:
 
 print("\nHere's the list of all the entries you have made so far \n")
 print("SrNo. Name Class Grade")
-c.execute("SELECT * FROM scores")
+c.execute("SELECT * FROM scores WHERE grade= ?",("A",))
 rows=c.fetchall()
 for row in rows:
     print(row)
