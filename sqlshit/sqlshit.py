@@ -1,4 +1,4 @@
-jmport sqlite3 as sq
+import sqlite3 as sq
 
 #now let us connect with the sqlite server
 conn=sq.connect("details.db")
