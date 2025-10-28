@@ -1,0 +1,15 @@
+Assignment 1 
+Presentation
+1. Compare c and c++
+2. Oops concept and properties
+3. Application of c++
+4. How to create class and objects
+
+
+Assignment 2
+Q.1. Explain in detail the concepts of multilevel inheritance and hybrid inheritance with suitable examples.
+
+Q.2. Write short notes on the following:
+(a) this pointer
+(b) Memory deallocation using new and delete operators
+(c) Static class members
