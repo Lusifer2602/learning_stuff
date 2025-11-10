@@ -7,11 +7,11 @@ sleep 1
 touch batman.txt batman.pdf
 mkdir sampledir
 cd sampledir
-echo "Now we have entered the new dir $(pwd)"
+echo -e "Now we have entered the new dir \n$(pwd)"
 sleep 1
 cd ..
 sleep 1
-echo "Now we have come back to the initial dir $(pwd)"
+echo -e "Now we have come back to the initial dir \n$(pwd)"
 sleep 1
 echo -e "\nThese are the contents of this folder $(ls) \n"
 echo "Now we shall delete this folder $(rm -r sampledir)"
