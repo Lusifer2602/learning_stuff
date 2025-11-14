@@ -8,7 +8,6 @@ if (a==2025) {
   console.log("Incorrect HAI BHAI GAWAR HAI KYA.");
 }
 
-let access;
 let age=Number(prompt("Enter your age :"));
 if (age >=18) {
     console.log("Allowed");

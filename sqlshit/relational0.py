@@ -18,12 +18,12 @@ WHERE name='Kamal Kumar'
 for i in row:
     print(i)
 
-print("This is students table data")
+print("\nThis is students table data")
 rows=c.execute("SELECT * FROM students")
 for i in rows:
     print(i)
 
 rows=c.execute("SELECT * FROM GRADES")
-print("This is grades table data")
+print("\nThis is grades table data")
 for i in rows:
     print(i)

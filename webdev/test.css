@@ -46,3 +46,8 @@ p {
     font-weight: 700;
 }
 
+#batmanlogo{
+    display:flex;
+    justify-items:center;
+    height: 50px;
+}

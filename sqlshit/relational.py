@@ -1,6 +1,6 @@
 import sqlite3 as sq
 
-con=sq.connect('details.db')
+con=sq.connect('sample.db')
 c=con.cursor()
 
 c.execute("""CREATE TABLE IF NOT EXISTS students(
@@ -29,14 +29,22 @@ while True:
     except Exception as e:
         print("ERROR :", e)
 while True:
+    # first list students that are in the database and print them with their student_id to know which student they want to edit
+    #then start a session where his/her subject and grades are inserted
+    #then insert into the database
+
     try:
         student_id=int(input("Enter student ID : "))
+        if student_id==404:
+            break
         subject=input("Enter subject name : ")
+        if subject=='q':
+            break
         grade=input("Grade ? : ")
-        if student_id=='q' or subject=='q' or grade=='q':
+        if grade=='q':
             break
         else:
             c.execute("INSERT INTO grades (student_id, subject, grade) VALUES (?, ?, ?)", (student_id, subject, grade))
-            c.commit()
+            con.commit()
     except Exception as e:
         print("ERROR :", e)
