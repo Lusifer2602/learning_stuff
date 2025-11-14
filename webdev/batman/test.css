@@ -1,0 +1,97 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: red;
+    text-shadow: 0 0 5px red;
+    text-align: center;
+}
+
+ul, ol {
+    padding: 10px;
+}
+
+li {
+    margin: 10px 0;
+    background: #1a1a1a;
+    padding: 10px;
+    border-radius: 20px;
+    /* display: inline-block; */
+    text-align: left;
+}
+li:hover{
+    background-color: #9a1f1b;
+    transition-duration: 100ms;
+}
+
+pre {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 20px;
+    display: inline-block;
+    text-align: left;
+    white-space: pre-wrap;
+    max-width: 100%;
+        
+}
+
+p {
+    /* text-align: center; */
+    font-size: 140%;
+    color: #9a1f1b;
+    font-weight: 700;
+}
+
+#batmanlogo{
+    display:flex;
+    justify-items:center;
+    height: 50px;
+}
+
+
+.preview {
+  position: relative;
+  color: #22d3ee;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.preview .tooltip {
+  position: absolute;
+  left: 50%;
+  top: 120%;
+  background: #1e293b;
+  color: #f8fafc;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  width: clamp(200px, 40vw, 320px);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.preview:hover .tooltip,
+.preview:focus-within .tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+/* Small screen adjustments */
+@media (max-width: 600px) {
+  .preview .tooltip {
+    left: 0;
+    right: 0;
+    transform: none;
+    width: 100%;
+    top: 130%;
+  }
+}
