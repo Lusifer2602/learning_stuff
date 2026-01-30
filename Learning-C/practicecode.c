@@ -9,7 +9,7 @@ scanf("%d", &j);
 
 for(i=1;i<=j;i++){
     if(i%2==0&&i%4!=0){
-        printf("%d ", i);
+        printf("%d, ", i);
         k++;
         sum+=i;
     }
