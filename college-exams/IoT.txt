@@ -1,0 +1,12 @@
+Written :
+Basics : History, Rquirements, Functional Structure of IoT, IoT enabling Technologies + various architecture models
+        Difference between  microcontrollers (Arduino, Raspberry Pi, ARM) and their hardware/software requirements for real-time systems.
+
+        Communication Protocols :IPv4&6, Ethernet, Specialised IoT protocols like IEEE802.15.4 & 5G.
+                                 Physical Layers like MIPI, SPI and USB SSIC
+        Data & Security : Cloud Storage, Big Data/Hadooop Platforms, IPython module for Data Analytics (focus on security protocols and network robustness)
+
+YouTube : IoT Architecture Layers (3-layer vs 5-layer) Explained
+        "IoT Networking: 6LoWPAN, Zigbee (802.15.4), and MQTT"
+        "Cloud Computing and Data Retrieval for IoT"
+        "IoT Security: Attacks and Defense Mechanisms"

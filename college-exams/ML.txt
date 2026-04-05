@@ -1,0 +1,21 @@
+Written :
+Designing a Learning System: Focus on the selection of the training set, target function, and function approximation algorithms.
+
+Regression & Trees: Study Linear and Logistic Regression. Learn the mechanics of Support Vector Machines (SVM) and the common issues encountered in Decision Tree learning.
+
+Neural Networks: Deep dive into Perceptron Learning and Backpropagation. Categorize models into Supervised and Unsupervised learning techniques.
+
+Bias and Fairness: Study how to detect bias and achieve fairness in algorithms. Review the criteria for comparing different machine learning models.
+
+YouTube :
+"How to design a Machine Learning system (Mitchell's approach)"
+
+"Linear Regression vs Logistic Regression vs SVM"
+
+"Decision Trees and Information Gain"
+
+"Backpropagation calculus explained simply"
+
+"Supervised vs Unsupervised Learning algorithms list"
+
+"Algorithmic Bias and Fairness in Machine Learning"
