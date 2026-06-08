@@ -1,207 +1,363 @@
 import math
 
-choice1 = ('''1. Basic Arithmetic :
-    a. raise number to a power
-    b. remainder
-    c. square root
-    d. any root of your choice 
-    e. factorial
-    f. lcm (least common multiple)
-    g. log''')
-choice2 = ('''2. Trigonometric Calculations:
-    a. angle conversion (radians <-> degrees)
-    b. cos
-    c. tan
-    d. sin 
-    e. sin inverse
-    f. cos inverse
-    g. tan inverse''')
-choice3 = ('''3. Geometric Calculations:
-    a. area of a circle
-    b. area of a square
-    c. area of a triangle
-    d. perimeter and volume formulas
-    e. surface area of a cylinder
-    f. surface area of a sphere ''')
 
-def two_num():
-    num1, num2 = map(float, input('Enter the first and second number separated by space: ').split())
-    return num1, num2
+# ----------------------------
+# INPUT HELPERS
+# ----------------------------
 
-def single_num():
-    a = float(input('Enter the number : '))
-    return a
+def get_float(prompt):
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid number. Try again.")
 
-def power_raise(a):
-    power = float(input('What power do you want to raise it to? - '))
-    print("Answer is :", math.pow(a, power))
 
-def remainder(a):
-    divide_by = float(input('What number do you want to divide it by to get remainder : '))
-    print('Remainder will be :', a % divide_by)
+def get_int(prompt):
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print("Enter a valid integer.")
 
-def sroot(a):
-    print('Square root will be :', math.sqrt(a))
 
-def root(a):
-    num = float(input('Which root do you want : '))
-    print('It is :', math.pow(a, 1/num))
+# ----------------------------
+# BASIC MATH
+# ----------------------------
 
-def logcalc(a):
-    base = float(input('To what base do you want the log value to be : '))
-    print(f'log of {a} to the base {base} will be', math.log(a, base))
+def power():
+    num = get_float("Number: ")
+    exp = get_float("Power: ")
+    print("Result =", num ** exp)
 
-def leastcm(num1, num2):
-    print('LCM will be :', math.lcm(int(num1), int(num2)))
 
-def highestcm(num1, num2):
-    print('HCF/GCD will be :', math.gcd(int(num1), int(num2)))
+def remainder():
+    num = get_float("Number: ")
+    div = get_float("Divide by: ")
 
-def factorial_num():
-    num1 = int(input('Enter the number for factorial (make sure it is non decimal) : '))
-    print(f'Factorial of {num1} will be :', math.factorial(num1))
+    if div == 0:
+        print("Cannot divide by zero.")
+        return
 
-# Trigonometric Functions
+    print("Remainder =", num % div)
+
+
+def square_root():
+    num = get_float("Number: ")
+
+    if num < 0:
+        print("Cannot square-root a negative number.")
+        return
+
+    print("Result =", math.sqrt(num))
+
+
+def nth_root():
+    num = get_float("Number: ")
+    root = get_float("Root: ")
+
+    if root == 0:
+        print("Root cannot be zero.")
+        return
+
+    print("Result =", num ** (1/root))
+
+
+def logarithm():
+    num = get_float("Number: ")
+    base = get_float("Base: ")
+
+    if num <= 0:
+        print("Number must be positive.")
+        return
+
+    if base <= 0 or base == 1:
+        print("Invalid base.")
+        return
+
+    print("Result =", math.log(num, base))
+
+
+def factorial():
+    num = get_int("Integer: ")
+
+    if num < 0:
+        print("Factorial requires a non-negative integer.")
+        return
+
+    print("Result =", math.factorial(num))
+
+
+def lcm():
+    a = get_int("First integer: ")
+    b = get_int("Second integer: ")
+
+    print("LCM =", math.lcm(a, b))
+
+
+def gcd():
+    a = get_int("First integer: ")
+    b = get_int("Second integer: ")
+
+    print("GCD =", math.gcd(a, b))
+
+
+# ----------------------------
+# TRIGONOMETRY
+# ----------------------------
 
 def angle_input():
-    angle = float(input('Enter value of the angle : '))
+    angle = get_float("Angle value: ")
+
+    unit = input(
+        "Enter D for degrees or R for radians: "
+    ).lower()
+
+    if unit == "d":
+        return math.radians(angle)
+
     return angle
 
-def angleconvert(angle):
-    which = int(input('Enter 1 to convert radians to degrees, or 2 for degrees to radians: '))
-    if which == 1:
-        print('In Degrees it will be :', math.degrees(angle))
-    elif which == 2:
-        print('In Radians it will be :', math.radians(angle))
+
+def convert_angle():
+    choice = input(
+        "1. Radians -> Degrees\n"
+        "2. Degrees -> Radians\n"
+        "Choice: "
+    )
+
+    angle = get_float("Value: ")
+
+    if choice == "1":
+        print("Result =", math.degrees(angle))
+
+    elif choice == "2":
+        print("Result =", math.radians(angle))
+
     else:
-        print('Something went wrong, try again.')
+        print("Invalid choice.")
 
-def cosine(angle):
-    print(f'cos({angle}) =', math.cos(angle))
 
-def sine(angle):
-    print(f'sin({angle}) =', math.sin(angle))
+def sine():
+    angle = angle_input()
+    print("sin =", math.sin(angle))
 
-def tangent(angle):
-    print(f'tan({angle}) =', math.tan(angle))
 
-def cosinv(angle):
-    print(f'acos({angle}) in degrees =', math.degrees(math.acos(angle)))
+def cosine():
+    angle = angle_input()
+    print("cos =", math.cos(angle))
 
-def sininv(angle):
-    print(f'asin({angle}) in degrees =', math.degrees(math.asin(angle)))
 
-def taninv(angle):
-    print(f'atan({angle}) in degrees =', math.degrees(math.atan(angle)))
+def tangent():
+    angle = angle_input()
+    print("tan =", math.tan(angle))
 
-# Geometric Calculations
 
-def areasquare():
-    s = float(input('Enter side of the square : '))
-    print(f'Area = {s*s} sq. units')
+def inverse_sine():
+    x = get_float("Value (-1 to 1): ")
 
-def arectangle():
-    length, breadth = map(float, input('Enter length and breadth of the rectangle separated by spaces: ').split())
-    print(f'Area = {length * breadth} sq. units')
+    if -1 <= x <= 1:
+        print("Angle =", math.degrees(math.asin(x)))
+    else:
+        print("Input must be between -1 and 1.")
 
-def atriangle():
-    s1, s2, s3 = map(float, input('Enter all three sides of the triangle separated by spaces : ').split())
-    s = (s1 + s2 + s3) / 2
-    area = math.sqrt(s * (s - s1) * (s - s2) * (s - s3))
-    print('Area of the triangle will be :', area)
 
+def inverse_cosine():
+    x = get_float("Value (-1 to 1): ")
+
+    if -1 <= x <= 1:
+        print("Angle =", math.degrees(math.acos(x)))
+    else:
+        print("Input must be between -1 and 1.")
+
+
+def inverse_tangent():
+    x = get_float("Value: ")
+    print("Angle =", math.degrees(math.atan(x)))
+
+
+# ----------------------------
+# GEOMETRY
+# ----------------------------
+
+def area_circle():
+    r = get_float("Radius: ")
+
+    if r < 0:
+        print("Radius cannot be negative.")
+        return
+
+    print("Area =", math.pi * r * r)
+
+
+def area_square():
+    s = get_float("Side: ")
+    print("Area =", s * s)
+
+
+def area_rectangle():
+    l = get_float("Length: ")
+    b = get_float("Breadth: ")
+    print("Area =", l * b)
+
+
+def area_triangle():
+    a = get_float("Side 1: ")
+    b = get_float("Side 2: ")
+    c = get_float("Side 3: ")
+
+    if a+b <= c or a+c <= b or b+c <= a:
+        print("Invalid triangle.")
+        return
+
+    s = (a+b+c)/2
+
+    area = math.sqrt(
+        s*(s-a)*(s-b)*(s-c)
+    )
+
+    print("Area =", area)
+
+
+def sphere_surface_area():
+    r = get_float("Radius: ")
+    print("Surface Area =", 4 * math.pi * r**2)
+
+
+def cylinder_surface_area():
+    r = get_float("Radius: ")
+    h = get_float("Height: ")
+
+    print(
+        "Surface Area =",
+        2 * math.pi * r * (r + h)
+    )
+
+
+# ----------------------------
+# MENUS
+# ----------------------------
+
+def basic_menu():
+    operations = {
+        "a": power,
+        "b": remainder,
+        "c": square_root,
+        "d": nth_root,
+        "e": logarithm,
+        "f": factorial,
+        "g": lcm,
+        "h": gcd
+    }
+
+    print("""
+a. Power
+b. Remainder
+c. Square Root
+d. Nth Root
+e. Log
+f. Factorial
+g. LCM
+h. GCD
+""")
+
+    choice = input("Choice: ").lower()
+
+    if choice in operations:
+        operations[choice]()
+    else:
+        print("Invalid choice.")
+
+
+def trig_menu():
+    operations = {
+        "a": convert_angle,
+        "b": cosine,
+        "c": sine,
+        "d": tangent,
+        "e": inverse_sine,
+        "f": inverse_cosine,
+        "g": inverse_tangent
+    }
+
+    print("""
+a. Angle Conversion
+b. Cosine
+c. Sine
+d. Tangent
+e. Sin Inverse
+f. Cos Inverse
+g. Tan Inverse
+""")
+
+    choice = input("Choice: ").lower()
+
+    if choice in operations:
+        operations[choice]()
+    else:
+        print("Invalid choice.")
+
+
+def geometry_menu():
+    operations = {
+        "a": area_circle,
+        "b": area_square,
+        "c": area_rectangle,
+        "d": area_triangle,
+        "e": cylinder_surface_area,
+        "f": sphere_surface_area
+    }
+
+    print("""
+a. Circle Area
+b. Square Area
+c. Rectangle Area
+d. Triangle Area
+e. Cylinder Surface Area
+f. Sphere Surface Area
+""")
+
+    choice = input("Choice: ").lower()
+
+    if choice in operations:
+        operations[choice]()
+    else:
+        print("Invalid choice.")
+
+
+# ----------------------------
+# MAIN
+# ----------------------------
 
 def main():
-    menu_main = ('\nSelect calculation type (0 to exit):\n'
-                 '1. Basic Math\n'
-                 '2. Trigonometric Functions\n'
-                 '3. Geometric Calculations')
-    menu_basic = ('\nBasic Math Options:\n'
-                  'a. Power Raise\n'
-                  'b. Remainder\n'
-                  'c. Square Root\n'
-                  'd. Nth Root\n'
-                  'e. Logarithm\n'
-                  'f. Factorial\n'
-                  'g. LCM\n'
-                  'h. HCF/GCD')
-    menu_trig = ('\nTrigonometric Options:\n'
-                 'a. Convert Angle (rad<->deg)\n'
-                 'b. Cosine\n'
-                 'c. Sine\n'
-                 'd. Tangent\n'
-                 'e. Inverse Sine\n'
-                 'f. Inverse Cosine\n'
-                 'g. Inverse Tangent')
-    menu_geom = ('\nGeometric Options:\n'
-                 'a. Square Area\n'
-                 'b. Rectangle Area\n'
-                 'c. Triangle Area')
 
     while True:
-        print(menu_main)
-        choice = input('Enter choice: ')
-        if choice == '0':
-            print('Goodbye!')
+
+        print("""
+1. Basic Math
+2. Trigonometry
+3. Geometry
+0. Exit
+""")
+
+        choice = input("Choice: ")
+
+        if choice == "1":
+            basic_menu()
+
+        elif choice == "2":
+            trig_menu()
+
+        elif choice == "3":
+            geometry_menu()
+
+        elif choice == "0":
+            print("Goodbye.")
             break
 
-        if choice == '1':
-            print(menu_basic)
-            sub = input('Enter option: ').lower()
-            if sub == 'a':
-                a = single_num(); power_raise(a)
-            elif sub == 'b':
-                a = single_num(); remainder(a)
-            elif sub == 'c':
-                a = single_num(); sroot(a)
-            elif sub == 'd':
-                a = single_num(); root(a)
-            elif sub == 'e':
-                a = single_num(); logcalc(a)
-            elif sub == 'f':
-                factorial_num()
-            elif sub == 'g':
-                x, y = two_num(); leastcm(x, y)
-            elif sub == 'h':
-                x, y = two_num(); highestcm(x, y)
-            else:
-                print('Invalid option, please try again.')
-
-        elif choice == '2':
-            angle = angle_input()
-            print(menu_trig)
-            sub = input('Enter option: ').lower()
-            if sub == 'a':
-                angleconvert(angle)
-            elif sub == 'b':
-                cosine(angle)
-            elif sub == 'c':
-                sine(angle)
-            elif sub == 'd':
-                tangent(angle)
-            elif sub == 'e':
-                sininv(angle)
-            elif sub == 'f':
-                cosinv(angle)
-            elif sub == 'g':
-                taninv(angle)
-            else:
-                print('Invalid option, please try again.')
-
-        elif choice == '3':
-            print(menu_geom)
-            sub = input('Enter option: ').lower()
-            if sub == 'a':
-                areasquare()
-            elif sub == 'b':
-                arectangle()
-            elif sub == 'c':
-                atriangle()
-            else:
-                print('Invalid option, please try again.')
-
         else:
-            print('Invalid selection, please choose 1, 2, 3 or 0.')
+            print("Invalid option.")
 
-if __name__ == '__main__':
-    main()                   
+
+if __name__ == "__main__":
+    main()
