@@ -1,9 +1,8 @@
 import math
 
 
-# ----------------------------
 # INPUT HELPERS
-# ----------------------------
+# We are going to use this to ensure type safety during taking inputs in the program
 
 def get_float(prompt):
     while True:
@@ -21,9 +20,8 @@ def get_int(prompt):
             print("Enter a valid integer.")
 
 
-# ----------------------------
 # BASIC MATH
-# ----------------------------
+# get_in and get_float functions have been used to take input for the basic math functions we have created in the program
 
 def power():
     num = get_float("Number: ")
