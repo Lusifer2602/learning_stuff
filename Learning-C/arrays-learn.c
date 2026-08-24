@@ -20,12 +20,12 @@ int main() {
     nums[0]=100, nums[4]=500;
     printf("%d %d %d %d %d\n", nums[0], nums[1], nums[2], nums[3], nums[4]);
 
-    //now learning to manually take input for an undefined array and then gives the entire array as output
-    // int samplearray[5];
-    // printf("Enter elements of array down here separated with space (don't enter comma to separate them :\n");
-    // scanf("%d %d %d %d %d", &samplearray[0], &samplearray[1], &samplearray[2], &samplearray[3], &samplearray[4]); //this one takes input for it
-    // //this one prints it 
-    // printf("%d %d %d %d %d\n", samplearray[0], samplearray[1], samplearray[2], samplearray[3], samplearray[4]);
+    // now learning to manually take input for an undefined array and then gives the entire array as output
+    int samplearray[5];
+    printf("Enter elements of array down here separated with space (don't enter comma to separate them :\n");
+    scanf("%d %d %d %d %d", &samplearray[0], &samplearray[1], &samplearray[2], &samplearray[3], &samplearray[4]); //this one takes input for it
+    //this one prints it 
+    printf("%d %d %d %d %d\n", samplearray[0], samplearray[1], samplearray[2], samplearray[3], samplearray[4]);
 
     int arr[3]={54, 72, 68};
     printf("%d\n", arr); //here arr  means same as &arr[0] because it literally just means it is pointing in the direction of memory address of the array's first index

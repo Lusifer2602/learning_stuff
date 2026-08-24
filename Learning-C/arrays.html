@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Arrays - The Ultimate Guide</title>
+    <style>
+        :root {
+            --primary-color: #04AA6D; /* W3Schools-like Green */
+            --primary-dark: #059862;
+            --bg-color: #f1f1f1;
+            --text-color: #333;
+            --code-bg: #282a36;
+            --code-text: #f8f8f2;
+            --output-bg: #e7f3fe;
+            --output-border: #2196F3;
+            --warning-bg: #ffdddd;
+            --warning-border: #f44336;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 25%;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .sidebar a {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+            transition: color 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .content {
+            width: 75%;
+            padding: 40px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            margin-top: 30px;
+            color: #444;
+        }
+
+        p, li {
+            font-size: 1.1rem;
+        }
+
+        code.inline {
+            background-color: #eee;
+            color: #d63384;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+            font-size: 1.05rem;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .output {
+            background-color: var(--output-bg);
+            border-left: 6px solid var(--output-border);
+            padding: 15px;
+            margin: 20px 0;
+            font-family: Consolas, monospace;
+            white-space: pre-wrap;
+        }
+
+        .output-label {
+            font-weight: bold;
+            color: var(--output-border);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .note, .warning {
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 6px solid;
+        }
+
+        .note {
+            background-color: #ffffcc;
+            border-color: #ffeb3b;
+        }
+
+        .warning {
+            background-color: var(--warning-bg);
+            border-color: var(--warning-border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 2px solid #ddd;
+            }
+            .content {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>C Programming: The Complete Array Guide</h1>
+        <p>From absolute basics to memory management and pointers</p>
+    </div>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <h3>Table of Contents</h3>
+            <a href="#intro">1. Introduction to Arrays</a>
+            <a href="#decl-init">2. Declaration & Initialization</a>
+            <a href="#access">3. Accessing Elements</a>
+            <a href="#sizeof">4. The sizeof() Trick</a>
+            <a href="#memory">5. Memory Representation</a>
+            <a href="#multidimensional">6. Multidimensional Arrays</a>
+            <a href="#strings">7. Character Arrays (Strings)</a>
+            <a href="#functions">8. Passing Arrays to Functions</a>
+            <a href="#pointers">9. Pointers and Arrays</a>
+            <a href="#vla">10. Variable Length Arrays (VLA)</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+
+            <!-- Section 1 -->
+            <h2 id="intro">1. Introduction to Arrays</h2>
+            <p>An array is a fixed-size sequential collection of elements of the <strong>same data type</strong>. Instead of declaring individual variables, such as <code>number0, number1, ..., number99</code>, you declare one array variable such as <code>numbers</code> and use <code>numbers[0], numbers[1], ..., numbers[99]</code> to represent individual variables.</p>
+            <ul>
+                <li><strong>Advantages:</strong> Code optimization, ease of traversing, ease of sorting/searching.</li>
+                <li><strong>Disadvantages:</strong> Fixed size (static). You cannot change the size of the array once it is created (unless using dynamic memory allocation like <code>malloc</code>).</li>
+            </ul>
+
+            <!-- Section 2 -->
+            <h2 id="decl-init">2. Declaration & Initialization</h2>
+            <p>To declare an array in C, specify the data type, the name of the array, and the number of elements it can hold in square brackets.</p>
+            <pre><code>data_type array_name[array_size];</code></pre>
+            
+            <h3>Initialization Methods</h3>
+            <p>You can initialize arrays at the time of declaration in several ways:</p>
+            <pre><code>// 1. Declare and initialize with specific size
+int ages[5] = {21, 22, 24, 25, 27};
+
+// 2. Initialize without specifying size (Compiler calculates it)
+int scores[] = {90, 85, 88, 92}; 
+
+// 3. Partial initialization (Remaining elements become 0 automatically)
+int marks[5] = {10, 20}; // Array becomes: {10, 20, 0, 0, 0}
+
+// 4. Initialize all elements to 0
+int counters[10] = {0};</code></pre>
+
+            <!-- Section 3 -->
+            <h2 id="access">3. Accessing Elements</h2>
+            <p>Array elements are accessed using an index. <strong>C arrays are 0-indexed</strong>, meaning the first element is at index 0, and the last element is at index <code>size - 1</code>.</p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[5] = {10, 20, 30, 40, 50};
+    
+    // Accessing elements
+    printf("First element: %d\n", arr[0]);
+    printf("Third element: %d\n", arr[2]);
+    
+    // Modifying elements
+    arr[1] = 99;
+    printf("Modified Second element: %d\n", arr[1]);
+    
+    return 0;
+}</code></pre>
+            <div class="output">
+                <span class="output-label">Output:</span>
+First element: 10
+Third element: 30
+Modified Second element: 99
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Out of Bounds Warning:</strong> C does NOT check if your index is valid. If you declare <code>int arr[3]</code> and try to access <code>arr[10]</code>, the compiler won't stop you. It will access garbage memory, which can crash your program (Segmentation Fault).
+            </div>
+
+            <!-- Section 4 -->
+            <h2 id="sizeof">4. The sizeof() Trick for Array Length</h2>
+            <p>Unlike languages like Java or Python, C arrays do not have a built-in <code>.length</code> property. To find how many elements are in an array, you divide the total size of the array by the size of one element.</p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[] = {15, 25, 35, 45, 55, 65, 75};
+    
+    // Total bytes of array / bytes of one integer
+    int length = sizeof(arr) / sizeof(arr[0]);
+    
+    printf("The array has %d elements.\n", length);
+    
+    // Using length to loop through the array
+    for(int i = 0; i < length; i++) {
+        printf("%d ", arr[i]);
+    }
+    
+    return 0;
+}</code></pre>
+
+            <!-- Section 5 -->
+            <h2 id="memory">5. Memory Representation</h2>
+            <p>Arrays are stored in <strong>contiguous</strong> memory locations. The array name itself acts as a pointer to the base address (the address of the first element).</p>
+            
+            <table>
+                <tr>
+                    <th>Element</th>
+                    <td><code>arr[0]</code></td>
+                    <td><code>arr[1]</code></td>
+                    <td><code>arr[2]</code></td>
+                    <td><code>arr[3]</code></td>
+                </tr>
+                <tr>
+                    <th>Value</th>
+                    <td>10</td>
+                    <td>20</td>
+                    <td>30</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <th>Memory Address (Assumes 4-byte int)</th>
+                    <td>0x7ffd00</td>
+                    <td>0x7ffd04</td>
+                    <td>0x7ffd08</td>
+                    <td>0x7ffd0c</td>
+                </tr>
+            </table>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[3] = {10, 20, 30};
+    
+    for(int i = 0; i < 3; i++) {
+        // %p is used to print memory addresses
+        printf("Address of arr[%d]: %p\n", i, &arr[i]);
+    }
+    return 0;
+}</code></pre>
+
+            <!-- Section 6 -->
+            <h2 id="multidimensional">6. Multidimensional Arrays</h2>
+            <p>C supports multidimensional arrays. The simplest form is the two-dimensional array, essentially an array of arrays (a matrix).</p>
+            
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    // 2 rows, 3 columns
+    int matrix[2][3] = {
+        {1, 2, 3},
+        {4, 5, 6}
+    };
+    
+    for(int i = 0; i < 2; i++) {
+        for(int j = 0; j < 3; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n"); // New line after each row
+    }
+    return 0;
+}</code></pre>
+
+            <!-- Section 7 -->
+            <h2 id="strings">7. Character Arrays (Strings)</h2>
+            <p>In C, strings are simply arrays of characters ending with a special null character <code>'\0'</code>. This null character tells C where the string ends.</p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    // Method 1: C automatically adds the '\0' at the end
+    char greeting[] = "Hello"; 
+    
+    // Method 2: Manually adding '\0'
+    char name[] = {'J', 'o', 'h', 'n', '\0'}; 
+    
+    printf("%s, %s!\n", greeting, name);
+    
+    // Notice the sizes:
+    printf("Size of greeting: %lu bytes\n", sizeof(greeting)); // Outputs 6 (H-e-l-l-o + \0)
+    
+    return 0;
+}</code></pre>
+
+            <!-- Section 8 -->
+            <h2 id="functions">8. Passing Arrays to Functions</h2>
+            <p>When you pass an array to a function, you are passing the <strong>memory address</strong> of the first element (pass by reference). This means changes made inside the function affect the original array.</p>
+
+            <div class="note">
+                <strong>Note:</strong> Because arrays "decay" into pointers when passed to functions, the <code>sizeof(arr)/sizeof(arr[0])</code> trick <strong>does not work</strong> inside functions. You must pass the size as a separate argument.
+            </div>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+// The function takes the array and its size
+void modifyArray(int arr[], int size) {
+    for(int i = 0; i < size; i++) {
+        arr[i] = arr[i] * 2; // Double the values
+    }
+}
+
+int main() {
+    int nums[] = {1, 2, 3, 4};
+    int size = sizeof(nums)/sizeof(nums[0]);
+    
+    modifyArray(nums, size);
+    
+    for(int i = 0; i < size; i++) {
+        printf("%d ", nums[i]);
+    }
+    return 0;
+}</code></pre>
+            <div class="output">
+                <span class="output-label">Output:</span>
+2 4 6 8
+            </div>
+
+            <!-- Section 9 -->
+            <h2 id="pointers">9. Pointers and Arrays (Advanced)</h2>
+            <p>In C, array names and pointers are deeply linked. The name of the array evaluates to a pointer to its first element: <code>arr == &arr[0]</code>.</p>
+            <p>You can use Pointer Arithmetic to navigate arrays without using square brackets.</p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[] = {10, 20, 30, 40};
+    int *ptr = arr; // ptr points to arr[0]
+    
+    // arr[i] is identical to *(arr + i)
+    printf("arr[0] is: %d\n", *ptr);         // 10
+    printf("arr[1] is: %d\n", *(ptr + 1));   // 20
+    printf("arr[2] is: %d\n", *(arr + 2));   // 30
+    
+    return 0;
+}</code></pre>
+
+            <!-- Section 10 -->
+            <h2 id="vla">10. Variable Length Arrays (VLA)</h2>
+            <p>Introduced in C99, VLAs allow you to define the size of an array using a variable at runtime. (Note: These are allocated on the Stack, so don't make them too large!)</p>
+
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int n;
+    printf("Enter number of elements: ");
+    // Assume user enters 5
+    scanf("%d", &n);
+    
+    // Array size determined at runtime
+    int vla_array[n]; 
+    
+    for(int i = 0; i < n; i++) {
+        vla_array[i] = i * 10;
+        printf("%d ", vla_array[i]);
+    }
+    
+    return 0;
+}</code></pre>
+
+            <hr style="margin-top: 50px; border: 0; border-top: 1px solid #ddd;">
+            <p style="text-align: center; color: #777;">
+                <em>Happy Coding! With these concepts, you now have a comprehensive understanding of how arrays operate in C.</em>
+            </p>
+
+        </div>
+    </div>
+
+</body>
+</html>
