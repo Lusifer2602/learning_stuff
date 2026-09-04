@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main(){
     //Here we are going to see how 3d arrays work
-    int arr[2][3][3]={
+    int arr[3][3][3]={
         {
             {10, 20, 30},
             {11, 21, 31},
@@ -11,6 +11,11 @@ int main(){
             {40, 50, 60},
             {41, 51, 61},
             {42, 52, 62}
+        },
+        {
+            {7, 2, 9},
+            {4, 8, 1},
+            {6, 3, 5}
         }
     };
 //how 3d arrays work is you give create 3 sq. bracket blocks
@@ -19,8 +24,8 @@ int main(){
 
 //let's try to print the elements of a 3d array
 int i, j, k;
-for(i=0; i<2; i++){ //decides the array's first index
-    printf("\nMatrix %d below :\n", i+1);
+for(i=0; i<3; i++){ //decides the array's first index
+    printf("\nMatrix %d :\n", i+1);
     printf("R x C \n");
     for(j=0; j<3;j++){ //decides array's second index i.e. Row of the selected array
         for(k=0; k<3; k++){ //decides array's 3rd index, i.e. Columnm of array being used
