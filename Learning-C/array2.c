@@ -13,6 +13,6 @@ int main(){
             printf("Position %d x %d is : %d\n", i, j, inventory[i][j]);
         }
     }
-
+    
 return 0;
 }

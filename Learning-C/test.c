@@ -31,7 +31,7 @@ int main(){
         if(lol[i]==0){break;}   
         
         else {continue;}
-    }
+    }   
 
     if(lol[i]==0) {printf("0 found in the array");}
     else{printf("0 not found in the array");}
